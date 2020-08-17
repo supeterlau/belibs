@@ -1,0 +1,81 @@
+https://openjfx.io/
+https://openjfx.io/openjfx-docs/#install-javafx
+
+https://www.tutorialspoint.com/javafx/javafx_overview.htm
+
+1. overview
+
+Written in Java
+  available for the languages on JVM
+
+FXML
+  a HTML like declarative markup language, define a user interface
+
+Scene Builder
+  an application named Scene Builder. the users can access a drag and drop design interface, which is used to develop FXML applications
+
+Swing Interoperability
+
+Built-in UI controls
+
+CSS like Styling
+
+Canvas and Printing API
+
+Rich set of API's
+
+Intergrated Graphics library
+
+Graphics pipeline
+
+JavaFX 14
+
+http://tutorials.jenkov.com/javafx/overview.html
+
+1. Overview
+
+inspired by Flash/Flex
+
+a JavaFX application contains one or more stages, 对应 windows。
+
+Each stage has a scene
+
+每个 scene 有一个 graph 对象，关联 controls layouts
+
+  scene graph
+
+Stage:
+  a JavaFX 应用可以有多个窗口，每个窗口有自己的 stage，对应一个 Stage object。每个应用有 primary Stage 对象，由 JavaFX runtime 创建。如果需要更多窗口，可以创建更多 Stage 对象。例如 dialogs wizard 等。
+
+Scene
+  如果想在 JavaFX 应用的 stage 上展示东西，就需要 scene。sstage 每次只能展示一个 scene，但是可以在 runtiime 改变 scene。例如游戏中，初始菜单场景，主游戏场景，游戏结束场景，每个界面都可以用不同场景表示。当要改变场景时，只需要改变关联到 Stage 对象的 scene。每个 scene 用 Scenne 对象表示。
+  一个 JavaFX 应用必须创建全部需要的 Scene
+
+Scene Graph
+  可见组件 controls layouts 必须关联 scene，它们组成 scene graph。
+
+Node
+  scene graph 上的每个组件是一个 Node。javafx.scene.Node
+
+Controls
+  提供某种控制功能的组件。 button，radio button，table，tree 等
+
+Layouts
+  包含其他组件的组件。layout components 包含 child components，是 javafx.scene.Parent 的子类
+
+  Nested Layouts
+
+Charts
+  JavaFX 有很多内置 chart components
+
+2D Graphics
+3D Graphics
+
+Audio
+
+Video
+
+WebView
+  based on WebKit
+
+https://github.com/AlmasB/FXGL AlmasB/FXGL: Java / JavaFX / Kotlin Game Library (Engine)
