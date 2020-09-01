@@ -1,0 +1,306 @@
+umbrella for Elixir 
+
+mix new libs_tour --umbrella
+cd libs_tour/apps
+mix new ecto_tour --module EctoTour --sup
+
+0. Ecto: Getting Started
+
+> mix new friends --sup
+
+adding Ecto and a driver Postgrex to our mix.exs file
+
+> edit mix.exs 
+
+Ecto 提供通用一致的 API，但我们还需要 Driver 来访问数据库
+
+Ecto -> Ecto.Adapters.Postgres -> postgrex package -> PostgreSQL
+
+Postgrex application will receive queries from Ecto and execute them against our database.
+
+> mix deps.get
+
+mix hex.config mirror_url
+mix hex.config mirror_url https://hexpm.upyun.com
+mix hex.config mirror_url https://cdn.jsdelivr.net/hex
+
+配置 ecto 
+
+mix ecto.gen.repo -r Friends.Repo
+
+  生成访问数据库需要的配置
+
+将 Repo 模块加入到应用的监督树
+setup the Friends.Repo as a supervisor within the application's supervision tree
+
+children = [
+  XXX.Repo 
+]
+
+用来启动接收并执行查询的 Ecto process
+
+config 中还要加入
+
+config :friends, ecto_repos: [Friends.Repo]
+
+这将让你能执行 mix ecto.create
+
+1. 根据配置创建数据库
+
+mix ecto.create 
+
+创建表
+
+  首先要创建 migration
+
+  mix ecto.gen.migration create_people
+
+  在生成的 migration 文件里加入数据表的列信息
+create table(:people) do
+  add :first_name, :string
+  add :last_name, :string
+  add :age, :integer
+end
+  
+  创建表 people 添加三个列 
+
+  ecto 的表用复数 people pluralized name
+
+执行迁移
+
+mix ecto.migrate 
+
+undo 迁移变化
+
+mix ecto.rollback
+
+  现在执行会删除刚新建的数据表
+
+The schema is an Elixir representation of data from our database.
+
+schema 与数据表关联
+
+创建 lib/friends/person.ex schema 使用单数 singularized name
+
+defines the schema from the database that this schema maps to
+
+schema "people" 表示关联的表
+
+iex -S mix
+
+每条数据表示为一个结构
+
+person = %Friends.Person{}
+
+设置值
+  person = %Friends.Person{age: 28}
+或
+  person = %{person | age: 28}
+
+person.age 
+
+创建数据 
+
+Friends.Repo.insert(person)
+
+获取新建后的结构
+
+{:ok, person} = Friends.Repo.insert person
+
+写入数据库前验证数据
+
+  ecto 使用 changeset 来处理
+
+在 Schema 中添加 
+
+  def changeset do 
+    ...
+  end 
+
+Ecto.Changeset.cast
+  cast 的参数才被允许传入余下的 changeset 
+
+Ecto.Changeset.validate_required
+  指定必须有值的数据
+
+changeset 过程
+
+  person = %Friends.Person{}
+  changeset = Friends.Person.changeset(person, %{})
+  Friends.Repo.insert(changeset)
+
+最后 Repo.insert 的参数不是 person 而是 changeset
+
+changeset 中有 person changes 和 必须满足的验证规则
+
+changeset.valid? 在调用数据库写入前测试是否满足验证条件
+  valid 不检查 constraints 如 uniqueness_constraints
+  这种错误必须尝试执行 insert 才能得到正确错误
+
+changeset.errors 显示错误信息
+
+根据 Repo.insert 返回的信息可以使用 case 处理
+
+case Repo.insert(changeset) do
+  {:ok, person} -> person 
+  {:error, changeset} -> changeset 
+end
+
+以可读形式返回错误信息
+
+Ecto.Changeset.traverse_errors/2
+
+trigger an exception to be thrown by using Friends.Repo.insert!/2 用这个方法抛出错误
+
+2. Query Data:
+
+  construct the query
+ 
+  execute that query against the database by passing the query to the repository (XXX.Repo)
+
+re-create the database
+
+mix ecto.drop
+mix ecto.create
+mix ecto.migrate
+
+批量插入数据
+people = [
+  %Friends.Person{first_name: "Ryan", last_name: "Bigg", age: 28},
+  %Friends.Person{first_name: "John", last_name: "Smith", age: 27},
+  %Friends.Person{first_name: "Jane", last_name: "Smith", age: 26},
+]
+Enum.each(people, fn (person) -> Friends.Repo.insert(person) end)
+
+people = [
+  %EctoTour.Person{first_name: "Ryan", last_name: "Bigg", age: 28},
+  %EctoTour.Person{first_name: "John", last_name: "Smith", age: 27},
+  %EctoTour.Person{first_name: "Jane", last_name: "Smith", age: 26},
+]
+Enum.each(people, fn (person) -> Friends.Repo.insert(person) end)
+
+获取单个数据
+
+Friends.Person |> Ecto.Query.first
+
+结果  #Ecto.Query<from p0 in EctoTour.Person, order_by: [asc: p0.id], limit: 1>  显示构造出的查询语句
+
+自己可以用类似语法构造
+
+require Ecto.Query
+
+Ecto.Query.from p in Friends.Person, order_by: [asc: p.id], limit: 1
+
+运行语句
+
+Friends.Person |> Ecto.Query.first |> Friends.Repo.one
+
+Friends.Repo.one 函数从数据库中获取一条数据，并返回新的 struct 
+
+使用 Friends.Repo.one 时，数据库结果必须只有一条数据，如果有多条会报错
+  如果结果为空，则返回 nil 
+
+除 first 还有 last Ecto.Query.last 
+
+获取全部数据 
+
+Friends.Person |> Friends.Repo.all
+
+基于 id 获取数据
+
+Friends.Person |> Friends.Repo.get(1)
+
+根据属性查询
+
+Friends.Person |> Friends.Repo.get_by(first_name: "Ryan")
+
+如果要根据属性获得多个数据 需要用
+
+Ecto.Query.where(last_name: "Smith")
+
+Friends.Person |> Ecto.Query.where(last_name: "Smith") |> Friends.Repo.all
+
+或者直接构建查询
+
+Ecto.Query.from(p in Friends.Person, where: p.last_name == "Smith") |> Friends.Repo.all
+
+二者都要求其中的变量是 pinned variable
+
+last_name = "Smith"
+
+Friends.Person |> Ecto.Query.where(last_name: ^last_name) |> Friends.Repo.all
+
+查询不需要一步构造完成，可以多个 query 组合起来
+
+query = Friends.Person |> Ecto.Query.where(last_name: "Smith")
+query = query |> Ecto.Query.where(first_name: "Jane")
+
+3. 更新数据
+
+需要三步，获取数据，创建 changeset 修改数据，使用 Ecto.Repo.update 更新数据
+person = EctoTour.Person |> Ecto.Query.first |> EctoTour.Repo.one
+changeset = EctoTour.Person.changeset(person, %{age: 10})
+EctoTour.Repo.update(changeset)
+
+类似 insert 对 update 结果也可以用 case 
+
+update! 会抛出错误
+
+4. 删除数据
+
+EctoTour.Repo.delete(person)
+
+也会返回 {:ok, _} 或 {:error, _} 适用于 case 结构
+
+5. 测试 ecto 
+
+新建 config/test.exs 
+
+在 config.exs 中导入 test.exs 
+
+import_config "#{Mix.env()}.exs"
+
+在 test/test_helper.exs 中配置数据库
+
+在测试前，要先建立数据库连接
+
+  - 用 ExUnit CaseTemplate 为所有测试创建
+
+  - 或为测试单独建立连接
+
+
+- Seed 数据库
+
+
+Repo 指代数据库
+Schema 指代数据表 Ecto.Schema
+
+Libs: 
+  postgrex
+
+
+
+
+PostgreSQL
+  https://www.postgresql.org/docs/12/index.html PostgreSQL: Documentation: 12: PostgreSQL 12.4 Documentation
+
+mix ecto.gen.repo -r EctoTour.Repo
+
+  umbrella 项目: updating ../../config/config.exs
+
+  "username": "dg_db_admin",
+  "password": "NGFmNTYyOWJlZDk",
+  "database": "dg_dev_db",
+
+自动初始化数据库
+  建用户 [生产环境一般不需要]
+  建数据库 [已经支持]
+  测试连接
+
+apps/ 项目内运行
+mix cmd --app kv_server mix test --color
+
+iex 重新编译模块
+  r EctoTour.Person 
+
+docker run -it --rm --link postgres-dev:postgres postgres:alpine psql -h postgres -U dg_db_admin -d dg_dev_db -P "footer=off"

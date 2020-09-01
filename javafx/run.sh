@@ -2,6 +2,8 @@
 
 set -x
 
+PATH_TO_FX=$HOME/Downloads/javafx-sdk-14.0.2.1/lib
+
 # target=$1
 # tmp=${target//\//.}
 # obj=${tmp%.java}
