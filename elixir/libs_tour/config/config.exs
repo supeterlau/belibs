@@ -9,12 +9,6 @@
 # move said applications out of the umbrella.
 import Config
 
-config :ecto_tour, EctoTour.Repo,
-  database: "ecto_tour_temp",
-  username: "dg_db_admin",
-  password: "NGFmNTYyOWJlZDk",
-  hostname: "localhost"
-  # port: 15432
 
 config :ecto_tour, ecto_repos: [EctoTour.Repo]
 

@@ -41,6 +41,7 @@ defmodule EctoTour.MixProject do
 
   defp aliases do
     [
-      "ectotest": ["ecto.create --quiet", "ecto.migrate", "test"]
+      ectotest: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
+  end
 end
