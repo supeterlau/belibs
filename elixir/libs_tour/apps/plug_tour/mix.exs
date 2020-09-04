@@ -32,6 +32,7 @@ defmodule PlugTour.MixProject do
       # {:sibling_app_in_umbrella, in_umbrella: true}
       {:plug_cowboy, "~> 2.0"},
       {:plug_octopus, git: "https://gitclone.com/github.com/jeffkreeftmeijer/plug_octopus"},
+      {:jason, "1.2.1"}
     ]
   end
 end
