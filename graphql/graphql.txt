@@ -1,0 +1,284 @@
+https://www.howtographql.com/
+
+1. Introduction
+
+GraphQL is a new API standard
+
+provides a more efficient, powerful and flexible alternative to REST
+
+GraphQL enables declarative data fetching where a client can specify exactly what data it needs from an API. Instead of multiple endpoints that return fixed data structures, a GraphQL server only exposes a single endpoint and responds with precisely the data a client asked for.
+
+用声明式数据，指定需要的数据。而不是通过多个 endpoints 获取固定结构数据。
+
+GraphQL 服务器只暴露一个单一 endpoint，返回 client 需要的数据。
+
+GraphQL is a query language for APIs
+
+- efficient data loading for mobile
+
+- Variety of different frontend frameworks and platforms
+
+difficult to build and maintain one API that would fit the requirements of all. 通过 GraphQL 客户端可以访问需要的数据
+
+- Fast development & expectation for rapid feature development
+
+With REST APIs, the way data is exposed by the server often needs to be modified to account for specific requirements and design changes on the client-side. This hinders fast development practices and product iterations.
+
+2. GraphQL is the better REST
+
+stateless servers and structured access to resources
+
+REST APIs have shown to be too inflexible to keep up with the rapidly changing requirements of the clients that access them
+
+GraphQL 满足 need for more flexibility and efficiency
+
+solves many of the shortcomings and inefficiencies that developers experience when interacting with REST APIs.
+
+（五个使用 GraphQL 的原因 https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
+
+REST 中需要三个 endpoint 来获取数据
+
+/users/<id>
+/users/<id>/posts
+/users/<id>/followers
+
+GraphQL 只需要向服务器发送自己需要哪些数据的请求。
+send a single query to the GraphQL server that includes the concrete data requirements.
+
+No more Over- and Underfetching
+
+  不再会下载不需要的数据和不够的数据
+  Overfetching
+  Underfetching
+    n+1-requests problem
+    例如为了展示用户最近三个关注者，需要先访问 /users 再访问 /users/<user-id>/followers
+
+Rapid Product Iterations on the Frontend
+  client 改变时，很有可能没有对应的 api，后端需要修改来满足数据需求
+  the backend needs to be adjusted as well to account for the new data needs.
+  This kills productivity and notably slows down the ability to incorporate user feedback into a product.
+
+  Thanks to the flexible nature of GraphQL, changes on the client-side can be made without any extra work on the server. Since clients can specify their exact data requirements, no backend engineer needs to make adjustments when the design and data needs on the frontend change.
+
+Insightful Analytics on the Backend
+  根据需要哪些数据，做数据分析
+  性能分析  low-level performance monitoring of the requests that are processed by your server. GraphQL 用 resolver functions 概念来收集客户端需要的数据 
+
+Benefits of a Schema & Type System
+  in a schema using the GraphQL Schema Definition Language (SDL)
+
+  作为 contract between the client and the server to define how a client can access the data
+
+  schema 确定后，前后端可以各自独立开发。前端可以通过 mock 开发，等后端完成后进行对接。
+
+3. Core Concepts
+
+- SDL 
+
+the syntax for defining types as well as sending queries and mutations.
+
+GraphQL 语法定义类型 及 发送查询和修改
+
+The syntax for writing schemas is called Schema Definition Language (SDL).
+
+type Person {
+  name: String!
+  age: Int!
+}
+
+field: name age 
+type: String Int 
+!: 必需数据
+
+描述一个 blog 
+
+type Post {
+  title: String!
+  author: Person!
+}
+
+type Person {
+  name: String!
+  age: Int!
+  posts: [Post]!
+}
+
+- Fetching Data with Queries 获取数据
+
+相比 REST，GrpahQL 需要发送更多数据给 server to express its data needs - this information is called a query.
+
+{
+  allPersons {
+    name
+  }
+}
+
+allPersons 是  root field of the query
+{
+  name 
+} 是 payload
+
+result:
+
+{
+  "data": {
+    "allPersons": [
+      {
+        "name": "Johnny"
+      },
+      {
+        "name": "Sarah"
+      },
+      {
+        "name": "Alice"
+      }
+    ]
+  }
+}
+
+请求用户及文章
+
+{
+  allPersons {
+    name
+    age
+    posts {
+      title
+    }
+  }
+}
+
+Queries with Arguments 带参数请求
+
+{
+  allPersons(last: 2) {
+    name
+  }
+}
+
+- Writing Data with Mutations 修改数据
+
+三种操作
+  creating 创建
+  updating 更新
+  deleting 删除
+
+CRUD ...
+
+mutation {
+  // ✅ 也有 root field : createPerson
+  // 这个 field 有两个参数 name age 
+  createPerson(name: "Bob", age: 36) {
+    // ✅ asking for the name and the age 
+    // 可以在修改数据同时获取数据，自定义需要的 payload
+    name
+    age
+  }
+}
+
+这样创建后会得到返回包含 name age 的结果
+
+修改 Person type 
+
+type Person {
+  id: ID!
+  name: String!
+  age: Int!
+}
+
+mutation {
+  createPerson(name: "Bob", age: 36) {
+    id
+  }
+}
+
+能得到 id 这个服务端生成的结果
+
+- Realtime Updates with Subscriptions 通过订阅实时更新数据
+
+现在的应用多数需要与服务器保持实时连接。GraphQL 提供 subscriptions 的概念。
+
+当客户端订阅某个 event 时，它会立刻获得与服务器的稳定连接。特定事件发生时，服务端推送响应数据到客户端。与 queries 和 mutations 遵循 “请求-响应-循环” 不同，订阅以数据流的形式发送到客户端。
+
+subscriptions 的书写语法和 queries mutations 一致。
+
+如下订阅发生在 Person 上的事件
+
+subscription {
+  newPerson {
+    name
+    age
+  }
+}
+
+客户端将该订阅发送到服务端后，两者之间就开启了连接。
+当有新 mutation 执行创建新 Person 操作后，服务端发送关于这个用户的信息到客户端
+
+{
+  "newPerson": {
+    "name": "Jane",
+    "age": 23
+  }
+}
+
+- Defining a Schema 定义语法结构
+
+schema 指定 API 的能力，定义客户端如何请求数据。被看作客户端和服务端的约定 contract。
+
+schema 仅仅是 GraphQL 类型集合。当给 APi 写 schema 时，有一些特殊的 root 类型：
+
+type Query { ... }
+type Mutation { ... }
+type Subscription { ... }
+
+这三种类型是客户端请求的入口 entry points。
+
+为了启用 allPerson-query Query 类型需要写做
+
+type Query {
+  // ✅ a root field of the API
+  allPerson: [Person!]!
+}
+
+支持 last 参数
+
+type Query {
+  allPersons(last: Int): [Person!]!
+}
+
+类似地，对于 createPerson-mutation 需要增加 root field 到 Mutation 类型
+
+type Mutation {
+  createPerson(
+    name: String!, 
+    age: Int!
+  ): Person!
+}
+
+订阅类型
+
+type Subscription {
+  newPerson: Person!
+}
+
+将它们和上边的 Person Post 放一起，就组成了所有我们在这一章看到的 full schema
+
+
+
+curl
+
+curl 'https://7sgx4.sse.codesandbox.io' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: https://www.graphqlbin.com' --data-binary '{"query":"# Write your query or mutation here\n{\n  users {\n    id\n  }\n}\n"}' --compressed
+
+graphql playground 需要填入一个 GraphQL endpoint 
+  https://7sgx4.sse.codesandbox.io
+
+graphnexus
+
+Prisma
+
+rest/graphql api doc
+
+（五个使用 GraphQL 的原因 https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
+https://www.graphql.com/articles/4-years-of-graphql-lee-byron
+
+https://www.prisma.io/blog/how-to-wrap-a-rest-api-with-graphql-8bf3fb17547d
