@@ -24,6 +24,28 @@ defmodule Http do
     accept(socket, dispatch)
   end
 
+  def read_request(request, acc \\ %{headers: []}) do
+    case :gen_tcp.recv(request, 0) |> IO.inspect do
+      # 读取 request path
+      {:ok, {:http_request, :GET, {:abs_path, full_path}, _}} ->
+        read_request(request, Map.put(acc, :full_path, full_path))
+      # 读取 header end
+      {:ok, :http_eoh} ->
+        acc
+      # 读取 headers
+      {:ok, {:http_header, _, key, _, value}} ->
+        read_request(
+          request,
+          Map.put(acc, :headers, [
+            {String.downcase(to_string(key)), value} | acc.headers
+          ]))
+      # 读取 body
+      {:ok, line} ->
+        line |> IO.inspect(label: "http line")
+        read_request(request, acc)
+    end
+  end
+
   def accept_raw(socket) do
     {:ok, request} = :gen_tcp.accept(socket)
     spawn(fn ->

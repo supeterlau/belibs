@@ -6,7 +6,9 @@ defmodule Http.Application do
   def start(_type, _args) do
     children = [
       # {Http, port: 8000}
-      {Http.PlugAdapter, plug: CurrentTime, port: 8000}
+
+      # {Http.PlugAdapter, plug: CurrentTime, port: 8000},
+      {Http.PlugAdapter, plug: Plug.Octopus, port: 8000}
     ]
     opts = [strategy: :one_for_one, name: Http.Supervisor]
     Supervisor.start_link(children, opts)
