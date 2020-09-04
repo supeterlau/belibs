@@ -1,5 +1,5 @@
 defmodule CurrentTime do
-  import Plug.conn
+  import Plug.Conn
 
   def init(options), do: options
 
