@@ -1,0 +1,257 @@
+The.Ruby.on.Rails.Tutorial.6th.2020.1
+
+Ch 1
+
+echo 'gem: --no-document' >> ~/.gemrc
+
+  skip the installation of Ruby documentation
+
+ruby -v
+
+ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-darwin19]
+
+gem install rails -v 6.0.2.1
+
+-v 确保安装特定版本
+
+with asdf: https://www.nikitakazakov.com/asdf-vm-version-manager-for-ruby-tutorial/
+
+rails -v
+
+yarn install --check-files
+
+创建 skeleton Rails Application
+
+rails _6.0.2.1_ new post_app
+
+(The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.)
+
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+
+'>= 2.15' 安装大于 2.15 版本最新的
+
+'~> 6.0.2.1' 安装大于 6.0 小于 6.1
+
+'~> 6.0' 安装大于 6.0 小于 7.0
+
+无版本 安装最新的
+
+编译 pg brew install postgresql && gem install pg (https://stackoverflow.com/questions/19262312/installing-pg-gem-on-os-x-failure-to-build-native-extension)
+
+rails server
+
+1.2.3 MVC
+
+app/
+  models/
+  views/
+  controllers/
+
+browser request ->
+  webserver ->
+    Rails controller ->
+      - render views
+      - interacts with a model -> communicate with database
+
+在 app/controllers/application_controller.rb 添加新 controller
+
+修改 Rails router
+
+  config/routes.rb
+
+  root route
+
+  root 'controller_name#action_name'
+
+1.4 Deploying - Heroku
+
+部署服务
+
+Phusion Passenger (module for Apache and Nginx)
+Engine Yard
+Rails Machine
+Engine Yard Cloud
+Heroku
+
+PostgreSQL post-gres-cue-ell
+
+bundling without production gems
+
+移除 sqlite，添加 pg gem，重新构建 Gemfile.lock
+
+bundle install --without production
+
+  更新 Gemfile.lock 但不安装 production 依赖
+
+  新版本用
+
+    bundle config set without 'production'
+
+    bundle install
+
+heroku login --interactive
+
+heroku whoami
+
+创建 heroku app (dyno)
+
+heroku create (heroku apps:create)
+
+传代码
+
+git push heroku master (默认 build master)
+
+更多 heroku 命令
+
+heroku apps:rename
+
+随机子域名 generate random subdomains: ('a'..'z').to_a.shuffle[0..7].join
+
+Ch 2. Toy App
+
+添加 hello action 到 app/controllers/application_controller.rb
+
+2.1.1 toy model
+
+users
+  id integer
+  name string
+  email string
+
+microposts
+  id integer
+  content text
+  user_id integer
+
+2.2 User resource User 资源
+
+基于 HTTP protocol 动词完成 create read update delete
+
+使用 Rails scaffolding
+
+scaffold 命令
+
+rails generate scaffold User name:string email:string
+
+  Rails 自动创建 id 作为 primary key
+
+创建基本的 CRUD 操作
+
+应用改变 rails db:migrate
+
+rails server / rails s
+
+用户访问 URL 与 Action Purpose 关系
+
+/users index
+/users/1 show
+/users/new new
+/users/1/edit edit
+
+show 展示全部 users
+
+访问 /users/new 创建用户
+
+用户访问 /users
+
+  浏览器请求 /users URL
+  Rails 路由 /users 到 User controller 的 index action
+  index action 用 User model 获取全部用户 User.all
+  User model 从数据库取回全部 users
+  User model 返回 users 列表到 controller
+  controller 将 @users 变量传给 index view
+  view 用 embedded Ruby 渲染 index view 为 HTML
+  controller 返回 HTML 到浏览器
+
+users 路由设置
+
+  resources :users
+
+REST URL
+
+GET /users index
+GET /users/1 show
+GET /users/new new
+POST /users create
+GET /users/1/edit edit
+PATCH /users/1 update
+DELETE /users/1 destroy
+
+@users 变量自动在 view 中可见
+
+自动生成代码的 weaknesses
+
+  没有数据校验
+  没有用户认证
+  没有测试
+  没有样式
+  no real understanding
+
+2.3 microposts resource
+
+rails generate scaffold Micropost content:text user_id:integer
+
+rails db:migrate
+
+GET /microposts index
+
+既然是 micropost 那么要对长度进行限制
+
+在 app/models/micropost.rb 中
+
+  validates :content, length: { maximum: 140 }
+
+rails 关联不同 model 的能力很强大
+
+app/models/user.rb
+
+has_many :microposts
+
+在 app/models/micropost.rb 中
+
+blongs_to :user
+
+由于 microposts 表中有 user_id，Active Record 可以推断出
+
+  microposts 与单个 user 关联
+
+在 rails console 中测试
+
+first_user = User.first
+
+first_user.microposts
+
+micropost = first_user.microposts.first
+
+micropost.user
+
+
+
+
+
+
+Deploy:
+
+https://github.com/dokku/dokku
+
+https://github.com/mhartl/rails_tutorial_6th_edition_gemfiles/blob/master/hello_app/Gemfile_final rails_tutorial_6th_edition_gemfiles/Gemfile_final at master · mhartl/rails_tutorial_6th_edition_gemfiles
+
+Mirror:
+
+https://gems.ruby-china.com/
+https://ruby-china.org/wiki/ruby-mirror
+
+Emacs Rails:
+
+https://dev.to/thiagoa/ruby-and-emacs-tip-advanced-pry-integration-33bk
+
+https://mullikine.github.io/posts/setting-up-lsp-with-emacs-attempt-2/
+
+solargraph rubocop
+
+https://www.vimfromscratch.com/articles/vim-for-ruby-and-rails-in-2019/
+
+docker build -t thibaut/devdocs -f Dockerfile-alpine .
+
+
+https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm Modern Rails flash messages (part 1): ViewComponent, Stimulus & Tailwind CSS
