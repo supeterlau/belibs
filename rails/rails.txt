@@ -225,9 +225,270 @@ micropost = first_user.microposts.first
 
 micropost.user
 
+models 中都继承自 ApplicationRecord
 
+  进一步继承自 ActiveRecord::Base
 
+controllers 里继承自 ApplicationController < ActionController::Base
 
+2.5 部署
+
+查看 heroku logs
+
+  heroku logs --tail
+
+因为修改了数据库，要执行
+
+  heroku run rails db:migrate
+
+一些缺点
+
+• No custom layout or styling
+
+• No static pages (such as “Home” or “About”)
+
+• No user passwords
+
+• No user images
+
+• No logging in
+
+• No security
+
+• No automatic user/micropost association
+
+• No notion of “following” or “followed”
+
+• No micropost feed
+
+• No meaningful tests
+
+• No real understanding
+
+Ch 3 静态页面
+
+Keep in toy app
+
+先创建 静态页面，后续会添加
+  users
+  microposts
+  full login
+  authentication framework
+
+3.2.1 生成静态页面
+
+创建 Home page，Help page
+
+rails generate controller StaticPages home help
+rails g controller StaticPages home help
+
+一些有用的缩写
+
+rails server    / rails s
+rails console   / rails c
+rails generate  / rails g
+rails test      / rails t
+bundle install  / bundle
+
+使用 StaticPages 生成 static_pages_controller 这仅仅是一个习惯
+
+也可以用 static_pages
+
+如何恢复上一个 rails 操作
+
+删除 controller
+
+rails destroy controller StaticPages home help
+
+删除 model
+
+rails destroy model User
+
+恢复数据库操作
+
+rails db:rollback
+
+rails db:migrate VERSION=0 恢复到最初数据库状态
+
+生成 controller 会更新 config/routes.rb
+
+get 'static_pages/home'
+
+将 URL /static_pages/home 映射到 StaticPages controller 的 home action
+
+3.2.2 自定义 static pages
+
+修改 app/views/static_pages/home.html.erb
+
+3.3 测试
+
+添加 about 页面前，最好先写个 automated test
+
+用失败的测试驱动写应用代码。
+
+rails g controller 自动添加测试代码到 test/controllers
+
+自动添加的测试很简单，就是请求连接，断言返回状态码为 :success 即 200 OK
+
+执行测试
+
+rails test
+
+为 About page 写个失败的测试 failing test
+
+test 错误信息找不到 static_pages_about_url
+
+routes.rb 中的
+
+get 'static_pages/help' 会自动创建 help static_pages_about_url
+
+因而为 about page 添加 get
+
+继续 failing，错误信息是找不到 about action
+
+继续创建 controller 文件
+
+继续 failing，错误信息是找不到 template
+
+创建 app/views/static_pages/about.html.erb
+
+3.4 稍微动态的页面
+
+让有些部分根据页面不同显示不同内容
+
+例如 让 Home Help About 标题显示不同
+
+rails new 自动创建 layout，先重命名它
+
+添加测试，测每个页面的 title 内容
+
+assert_select "title", ""
+
+这三个页面结构相似，可以基于 layout 重构
+
+layout 页面
+
+<%= yield %> 用于嵌入具体页面内容
+
+<%= csrf_meta_tags %> 防止 CSRF 攻击
+
+<%= csp_mmeta_tag %> 防止 CSP XSS 攻击
+
+<%= stylesheet_link_tag ... %> 引入样式
+
+<%= javascript_pack_tag "application", ... %> 引入 JS
+
+将 root 指向 static_pages#home
+
+为 root path 增加测试
+
+3.6 高级测试
+
+minitest reporter: 加强的 pass/fail reporter
+
+Guard: 自动测试 runner，检测文件变化，自动执行测试
+
+Ch 4 Rails-flavored Ruby
+
+4.1.2 定制 helper 函数
+
+app/helpers/application_helper.rb
+
+在视图中使用
+
+<%= full_title(yield(:title)) %>
+
+<%= yield %> 用于插入变量到视图中
+
+4.2 Strings, methods
+
+~/.irbrc
+
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:AUTO_INDENT_MODE] = false
+
+打开 rails console / rails c 即可看到效果
+
+puts "foo"
+
+print "foo\n"
+
+单引号不插入变量内容
+
+"foobar".length
+
+=> 6
+
+if
+elsif
+elsif
+else
+end
+
+o.nil?
+
+s.class
+
+String.new("foobar")
+
+Array.new([1,2,,3])
+
+s.class.superclass.superclass.superclass
+
+class Word < String
+  def palindrome?
+    self == self.reverse
+  end
+end
+
+class String
+  def palindrome?
+    self == self.reverse
+  end
+end
+
+"deified".palindrome?
+
+controller = StaticPagesController.new
+controller.class
+
+attr_accessor :name, :email
+
+为对象属性创建 getter setter
+
+Ch 5 Layout
+
+添加样式，学习 partials，Rails routes，asset pipeline，intro to Sass
+
+5.1 增加 structure
+
+add structure to layout
+
+styling with css
+
+增加导航栏
+
+app/views/layouts/application.html.erb
+
+Rails helper link_too 创建链接
+
+<%= link_to "Home", '#', id: "logo" %>
+
+使用 bootstrap
+
+gem bootstrap-sass
+
+bundle / bundle install
+
+创建一个自定义 css
+
+app/assets/stylesheets/custom.scss
+
+添加 bootstrap 到 custom.scss
+
+Ch 5
+Ch 5
+Ch 5
 
 
 Deploy:
