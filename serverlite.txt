@@ -1,0 +1,28 @@
+firebase
+
+leancloud
+
+https://harperdb.io/ HarperDB | Simplicity Without Sacrifice
+
+darklang
+
+harusa
+
+superbase
+
+deta
+  deta.sh
+
+  A Cloud for the next Billion Ideas.
+  Build your apps in hours, deploy them in seconds.
+
+
+  Missing Feature:
+
+  - Template
+    ecommerce
+    blog
+
+  - Accounts
+
+  - Payment
