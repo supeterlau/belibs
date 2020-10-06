@@ -6,6 +6,10 @@ gem install bundler jekyll
 
 jekyll new my-awesome-site
 
-  cd my-awesome-site
+cd my-awesome-site
 
-  bundle exec jekyll serve
+bundle exec jekyll serve
+
+主题
+
+插件
