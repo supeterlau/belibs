@@ -10,6 +10,55 @@ cd my-awesome-site
 
 bundle exec jekyll serve
 
+命令参数
+
+显示帮助 
+
+bundle exec jekyll help
+
+启动站点
+
+bundle exec jekyll serve -h
+
+bundle exec jekyll serve  -P 4040
+
+jekyll serve --watch --livereload
+
+确定 theme gem 位置
+
+bundle info --path minima (默认主题) https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+bundle info minima
+
 主题
 
 插件
+
+## SEO 
+
+keyword
+  https://blog.webjeda.com/optimize-jekyll-seo/ 10 Must do Jekyll SEO optimizations | Webjeda
+
+## 多语言
+
+https://forestry.io/blog/creating-a-multilingual-blog-with-jekyll/ Creating a Multilingual Blog With Jekyll | Forestry.io
+
+## 其他
+
+favicon
+
+  https://ptc-it.de/add-favicon-to-mm-jekyll-site/ Adding a favicon to a Jekyll-based static website - P.T.C.
+
+    copy the theme's default head custom.html into the local project
+
+  https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+
+  /assets/images
+
+  cd assets/images
+  unzip /path/to/favicon_package_v0.16.zip
+
+静态文件 
+
+  https://jekyllrb.com/docs/static-files/ /assets/img/image.jpg
