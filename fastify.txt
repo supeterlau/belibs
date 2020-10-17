@@ -1,0 +1,87 @@
+https://www.fastify.io/docs/latest/Getting-Started/
+
+yarn add fastify
+
+"dev": "nodemon server/server.js --exec babel-node --persets es2015"
+
+As with JavaScript, where everything is an object, with Fastify everything is a plugin
+
+
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head
+
+
+# Swagger API
+
+https://www.freecodecamp.org/news/how-to-build-blazing-fast-rest-apis-with-node-js-mongodb-fastify-and-swagger-114e062db0c9/
+
+yarn add -D nodemon 
+yarn add mongoose fastify fastify-swagger boom
+
+https://dev.to/cristiandi/demo-api-using-fastify-48jo
+
+https://github.com/hapijs/boom hapijs/boom: HTTP-friendly error objects
+
+https://dev.to/gmarokov/node-js-restful-api-template-with-typescript-fastify-and-mongodb-4ceo Node.js Restful API template with TypeScript, Fastify and MongoDB - DEV Community 👩‍💻👨‍💻
+
+#Auth 
+
+with jwt
+
+https://dev.to/lek890/authentication-strategy-application-fastify-typescript-jwt-52nb Authentication Strategy - Fastify + Typescript + JWT - DEV Community 👩‍💻👨‍💻
+
+https://dev.to/lek890/custom-authentication-strategy-in-fastify-using-decorators-lifecycle-hooks-and-fastify-auth-2fo7 Custom Authentication Strategy in Fastify using decorators, lifecycle hooks and fastify-auth - DEV Community 👩‍💻👨‍💻
+
+https://github.com/fastify/fastify-auth fastify/fastify-auth: Run multiple auth functions in Fastify
+
+# GraphQL API
+
+# Using TypeScript
+
+https://www.fastify.io/docs/latest/TypeScript/
+
+yarn add -D typescript @types/node
+
+"scripts": {
+   "build": "tsc -p tsconfig.json",
+   "start": "node index.js"
+ }
+
+# aws-sdk
+
+yarn add aws-sdk
+
+Local dev:
+
+credential setup 
+  Docker: 
+    https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
+
+aws dynamodb list-tables --endpoint-url http://localhost:8765 --region ap-southeast-1 --profile <string>
+
+delete-tables --table-name <string>
+
+  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html Command line options - AWS Command Line Interface
+
+  https://stackoverflow.com/questions/31425838/bash-with-aws-cli-unable-to-locate-credentials aws cli - Bash with AWS CLI - unable to locate credentials - Stack Overflow
+
+命名规则和数据类型
+
+  https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html Naming Rules and Data Types - Amazon DynamoDB
+
+  table name: 3-255
+
+  attribute name: 1-255
+
+query vs scan 
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-query-scan.html Best Practices for Querying and Scanning Data - Amazon DynamoDB
+http://techtraits.com/cloud/nosql/2012/06/28/Amazon-DynamoDB-Understanding-Query-and-Scan-operations.html# DynamoDB: Understanding Query and Scan Operations
+
+https://medium.com/@osiolabs/read-write-json-files-with-node-js-92d03cc82824 Read/Write JSON Files with Node.js | by Osio Labs | Medium
+
+
+
+https://github.com/fastify/fastify-cli fastify/fastify-cli: Run a Fastify application with one command!
+
+https://github.com/fastify/aws-lambda-fastify fastify/aws-lambda-fastify: Insipired by aws-serverless-express to work with Fastify with inject functionality.
