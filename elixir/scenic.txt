@@ -1,0 +1,15 @@
+Getting Started
+
+- install
+
+https://hexdocs.pm/scenic/install_dependencies.html#on-macos
+brew install glfw3 glew pkg-config
+
+mix archive.install hex scenic_new
+
+- build basic
+
+
+mix do deps.get, scenic.run
+
+Failed to check for new Hex version network error
