@@ -1,0 +1,13 @@
+基于 webview
+
+编译: wails build
+
+可执行文件: ./build/<name>
+
+开发: wails serve
+cd frontend && yarn start
+
+https://github.com/udhos/update-golang/issues/15
+go build runtime/cgo: open /usr/local/go/pkg/linux_amd64/runtime/cgo.a: permission denied #15
+
+sudo chown -R lxy:admin /usr/local/go/
