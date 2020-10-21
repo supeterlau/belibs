@@ -39,6 +39,11 @@ bundle info minima
 keyword
   https://blog.webjeda.com/optimize-jekyll-seo/ 10 Must do Jekyll SEO optimizations | Webjeda
 
+百度统计
+hotjar
+
+  https://mycyberuniverse.com/add-hotjar-tracking-to-jekyll-website.html Add Hotjar tracking to a Jekyll website
+
 ## 多语言
 
 https://forestry.io/blog/creating-a-multilingual-blog-with-jekyll/ Creating a Multilingual Blog With Jekyll | Forestry.io
