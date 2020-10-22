@@ -4,7 +4,11 @@ https://www.howtographql.com/
 
 GraphQL is a new API standard
 
+GraphQL 是新 API 标准
+
 provides a more efficient, powerful and flexible alternative to REST
+
+提供更高效，强大，灵活的 API 方案
 
 GraphQL enables declarative data fetching where a client can specify exactly what data it needs from an API. Instead of multiple endpoints that return fixed data structures, a GraphQL server only exposes a single endpoint and responds with precisely the data a client asked for.
 
@@ -33,8 +37,6 @@ REST APIs have shown to be too inflexible to keep up with the rapidly changing r
 GraphQL 满足 need for more flexibility and efficiency
 
 solves many of the shortcomings and inefficiencies that developers experience when interacting with REST APIs.
-
-（五个使用 GraphQL 的原因 https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
 
 REST 中需要三个 endpoint 来获取数据
 
@@ -73,11 +75,19 @@ Benefits of a Schema & Type System
 
 3. Core Concepts
 
+SDL 
+
+Query 
+
+Mutaion 
+
+Subscription
+
 - SDL 
 
 the syntax for defining types as well as sending queries and mutations.
 
-GraphQL 语法定义类型 及 发送查询和修改
+GraphQL 语法: 定义类型，发送查询和修改
 
 The syntax for writing schemas is called Schema Definition Language (SDL).
 
@@ -105,7 +115,9 @@ type Person {
 
 - Fetching Data with Queries 获取数据
 
-相比 REST，GrpahQL 需要发送更多数据给 server to express its data needs - this information is called a query.
+相比 REST，GrpahQL 需要发送更多数据给 server to express its data needs 
+
+his information is called a query.
 
 {
   allPersons {
@@ -114,6 +126,7 @@ type Person {
 }
 
 allPersons 是  root field of the query
+
 {
   name 
 } 是 payload
@@ -263,22 +276,144 @@ type Subscription {
 
 将它们和上边的 Person Post 放一起，就组成了所有我们在这一章看到的 full schema
 
+4. Big Picture (Architecture) 架构
+
+GraphQL 只是一个 specification 说明，只是描述 GraphQL Server 如何工作的文档。
+
+4.1 Use Cases 使用场景
+
+主要的三种场景
+
+  - 连接数据库的 GraphQL Server 
+  - 将 GraphQL 作为 thin layer 放在其他旧第三方或旧系统前，通过这个单一节点进行交互
+  - 通过单个 GraphQL API 和数据库及其他系统交互。是前两者的混合架构
+
+- 连接数据库的 GraphQL Server 
+
+新项目的常用架构。有一个实现 GraphQL 格式的服务器，读取请求 query payload，从数据库中获取对应数据。这个过程称为 resolving the  query。然后按照规定构建返回值格式，返回给客户端。
+
+GraphQL 是与传输协议无关的。因此可以基于 TCP，WebSockets 等实现 GraphQL。
+
+同样也不依赖数据库的类型。
+
+- 与已有系统整合的 GraphQL 
+
+GraphQL 统一其他系统接口，将它们的复杂性隐藏在 GraphQL 后。
+
+不限制其他系统的类型。
+
+- 混合架构
+
+resolve query 后，可以从数据库或其他系统获取数据。
+
+4.2 Resolver Function 
+
+GraphQL query 或 mutation 由一组 field 组成。每个 field 对应服务器实现里的一个 function，即 resolver 。
+
+resolver 负责获取对应 field 数据。
+
+server 接收 query，调用 payload 中给 field 指定的每个 function。从而 resolve query，为每个 field 获取数据。 
+
+query {
+  User(id: "12345678") {
+    name 
+    followers(first: 5) {
+      name 
+      age 
+    }
+  }
+}
+
+对应服务器函数
+
+User(id: String!): User 
+
+name(user: User!): String 
+
+age(user: User!): Int 
+
+followers(first: Int, user: User!): [User!]!
+
+4.3 客户端 libraries 
+
+客户端只需要同一个统一灵活的 API 交互。
+
+处理 REST API 流程 (imperative data fetching approach)
+
+  构建发送请求
+  接收解析响应
+  存储数据
+  在 UI 上显示
+
+处理 GraphQL 流程 (declarative data fetching approach,)
+
+  描述需要的数据
+  在 UI 上显示
+
+底层网络请求和数据存储应该被抽象出来，从而专注于定义依赖数据的格式。
+
+类似 Relay or Apollo 都提供了这样的能力。
+
+Advanced
+
+1. Client 
+2. Server 
+3. More GraphQL Concept 
+4. Tooling and Ecosystem 
+5. Security
+6. Common Questions 
 
 
-curl
+# Get started with your favorite technology
+
+- Backend
+
+1 Ruby https://www.howtographql.com/graphql-ruby/0-introduction/
+
+2 Elixir https://www.howtographql.com/graphql-elixir/0-introduction/
+
+3 Golang https://www.howtographql.com/graphql-go/0-introduction
+
+4 Node
+
+- Frontend 
+
+1. React & Apollo https://www.howtographql.com/react-apollo/0-introduction/ 
+
+
+urql is a GraphQL client for React that is easy to get started with while remaining very customizable over time.
+  https://formidable.com/open-source/urql/ urql is a blazing-fast GraphQL client that supports React, Preact, and Svelte (alpha).
+
+VulcanJS is a fullstack JavaScript framework that lets you build GraphQL apps with React, Apollo Client and Meteor
+  https://docs.vulcanjs.org/ Read Me | Vulcan Docs
+
+Issues:
+
+- Cache
+
+- monitor 
+
+Tools:
+
+- curl
 
 curl 'https://7sgx4.sse.codesandbox.io' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: https://www.graphqlbin.com' --data-binary '{"query":"# Write your query or mutation here\n{\n  users {\n    id\n  }\n}\n"}' --compressed
 
-graphql playground 需要填入一个 GraphQL endpoint 
+- graphql playground 需
+
+要填入一个 GraphQL endpoint 
   https://7sgx4.sse.codesandbox.io
 
-graphnexus
+- graphnexus
 
-Prisma
+- Prisma
 
-rest/graphql api doc
+- rest/graphql api doc
 
-（五个使用 GraphQL 的原因 https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
+Refs:
+
+https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511 五个使用 GraphQL 的原因 
+
 https://www.graphql.com/articles/4-years-of-graphql-lee-byron
 
 https://www.prisma.io/blog/how-to-wrap-a-rest-api-with-graphql-8bf3fb17547d
