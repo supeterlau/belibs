@@ -32,7 +32,9 @@ bundle info minima
 
 ## 主题
 
-插件
+## 插件
+
+## front matter
 
 ## SEO 
 
