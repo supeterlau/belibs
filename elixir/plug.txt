@@ -1,0 +1,328 @@
+Tour:
+
+# Serving Plug: Building an Elixir HTTP server from scratch
+
+https://blog.appsignal.com/2019/01/22/serving-plug-building-an-elixir-http-server.html Serving Plug: Building an Elixir HTTP server from scratch | AppSignal Blog
+
+1. how HTTP servers work
+
+decoding requests and encoding responses
+
+building a minimal subset of an HTTP server that can accept HTTP requests and run a Plug application
+
+a production-ready HTTP server: cowboy
+
+HTTP over TCP
+
+{:ok, socket} = :gen_tcp.listen(opts)
+
+{:ok, request} = :gen_tcp.accept(socket)
+
+发送内容为 Elixir 字符串
+
+response = """
+<BUILDING HTTP RESPONSES>
+  status line\r\n
+  header lines\r\n
+  \r\n
+  response body
+"""
+
+:gen_tcp.send(socket, response)
+:gen_tcp.close(socket)
+
+用 supervisor 在 Http.Application 中启动 Http.start(M, F, A)
+
+def child_spec(opts) do
+  %{id: Http(__MODULE__), start: {Http, :start_link, [opts]}}
+end
+
+启动
+
+mix run --no-halt
+
+mix cmd --app plug_tour mix run --no-halt
+
+2. use plug 
+
+现在 response 是硬编码的，
+
+使用 Plug 模块处理 response 
+
+要使用 Plug，需要 webserver 和对应的 plug bindings
+
+常用 plug_cowboy
+
+def deps do
+  [
+    {:plug_cowboy, "~> 2.0"}
+  ]
+end
+
+  import Plug.conn 
+
+定义 init 和  call
+
+call 的第一个参数是 %{Plug.Conn}
+
+  put_resp_content_type
+
+  send_resp
+
+新模块功能和原来一样，但是与 webserver 解偶
+
+由于使用 Plug 现在我们的代码不用改变就可以更换 webserver 
+
+也可以随意更改应用代码不会影响 webserver 
+
+3. plug adapter
+
+plug adapter 用于连接 webserver 和 application 
+
+plug adapter 主要目的是构造 %{Plug.Conn} 传给 CurrentTime.call(conn, _opts)
+
+adapter 的 dispatch 用于构造 %{Plug.Conn}
+
+CurrentTime 中 send_resp 如何使用到 Plug.Adapter 中的 send_resp 的
+
+  Plug.Conn 
+
+  @spec send_resp(t, status, body) :: t | no_return
+  def send_resp(%Conn{} = conn, status, body) do
+    conn |> resp(status, body) |> send_resp()
+  end
+
+    内部再调用 conn adapter 的 send_resp 
+
+4. 使用其他 application 
+
+简单替换掉 CurrentTime 模块，显示页面中的按钮无法点击，访问任意页面都返回同样内容。
+
+原因在于我们没有解析 request。
+
+5. 解析 request 
+
+url body 
+
+从 socket 中读取 request 
+
+使用 :http_bin 参数，使我们可以对返回的 request format 使用模式匹配
+
+read_request 一直调用 :gen_tcp.recv(request) 直到遇到 :http_eoh (he end of the requests headers)
+
+:http_request 包含请求路径 
+
+read_request 在 addapter 中读取 request 
+
+
+** (Mix) Could not start application plug_tour: Http.Application.start(:normal, []) returned an error: shutdown: failed to start child: Http
+    ** (EXIT) :badarg
+    内部 Erlang 方法调用参数写错导致。。。
+    通过 IO.inspect 找到
+
+Connection reset by peer
+  \r\n 写错成 \n\r 
+
+# Plug Document 
+
+https://hexdocs.pm/plug/readme.html
+
+1. custom plug (CurrentTime)
+
+plug server -> plug adapter -> plug custom module 
+
+2. Plug.Conn 
+
+https://hexdocs.pm/plug/Plug.Conn.html
+
+3. Plug.Router 
+
+https://hexdocs.pm/plug/Plug.Router.html
+
+A DSL to define a routing algorithm that works with Plug.
+
+@moduledoc ~S"""
+"""
+
+根据请求方法和路径，分发请求的路由 
+
+plug :match 后可以用 get match 
+
+plug :dispatch 
+  运行匹配的代码 excute matched code 
+
+- match 
+
+get "/hello/*_rest" do
+  send_resp(conn, 200, "matches all routes starting with /hello")
+end
+get "/hello/*glob" do
+  send_resp(conn, 200, "route after /hello: #{inspect glob}")
+end
+
+:name URL 参数可以从 `conn.params["name"]` and `conn.path_params["name"]` 得到
+
+类似 
+
+get "" do 
+  send_resp(conn, 200, "hello world")
+end 
+
+编译为 match 函数
+
+默认 match 只匹配路径，而忽略 http 方法
+
+match "", via: :get do 
+  send_resp(conn, 200, "hello world")
+end 
+
+match 中可以使用 guard 
+
+match "/foo/bar/:baz", when size(baz) < 3, :get do 
+  send_resp(conn, 200, "hello world")
+end
+
+继续编译为
+
+defp match("GET", ["foo", "bar"], conn) do
+  send_resp(conn, 200, "hello world")
+end 
+
+match 可以到 函数或模块
+
+match "/foo/bar", via: :get do
+  send_resp(conn, 200, "hello world")
+end
+match "/baz", to: MyPlug, init_opts: [an_option: :a_value]
+
+- 解析参数 
+
+parsing URL-encoded, form-data, and JSON data as well as
+  providing a behaviour that others parsers can adopt
+
+可以解析 URL-encoded, form-data, and JSON data，提供 behaviour 对接其他解析器
+
+plug Plug.Parsers, parsers: [:json],
+                  pass:  ["application/json"],
+                  json_decoder: Jason
+
+- 错误处理 
+
+if Mix.env == :dev do
+    use Plug.Debugger
+  end
+
+use Plug.ErrorHandler
+
+use Plug.ErrorHandler 后可以用 handle_errors 函数
+
+defp handle_errors(conn, %{kind: _kind, reason: _reason, stack: _stack}) do
+  send_resp(conn, conn.status, "Something went wrong")
+end
+
+- route 和 plug 之间添加数据
+
+get "/hello", assigns: %{an_option: :a_value} do
+  send_resp(conn, 200, "world")
+end
+
+或 private: %{}
+
+read from conn.assigns (or conn.private)
+
+- Router options 
+
+https://hexdocs.pm/plug/Plug.Router.html#module-routes-options
+
+plug :dispatch, content: "hello world"
+
+get "/hello" do
+  send_resp(conn, 200, opts[:content])
+end
+
+以上可以用 Plug.Builder.builder_opts() 宏标记
+
+plug :inspect_opts, builder_opts()
+
+defp inspect_opts(conn, opts) do
+  IO.inspect(opts)
+  conn
+end
+
+在启动所在 Router 或用于 plug pipeline 时可以传入参数
+
+Plug.Cowboy.http AppRouter, [content: "hello world"]
+
+plug AppRouter, content: "hello world"
+
+- forward
+
+forward "/users", to: UserRouter
+
+请求 /users/sign_in， UserRouter 会接收到 /sign_in 
+
+forward "/foo/:bar/qux", to: FooPlug
+
+请求 /foo/BAZ/qux，FooPlug 会接收到 / conn.params["bar"] 为 BAZ 
+
+4. Plug.Builder
+
+plug pipeline (Plug.Builder)
+
+5. Test 
+
+https://hexdocs.pm/plug/Plug.Test.html
+
+use Plug.Test 会导入 Plug.Test 和 Plug.Conn 的全部函数
+
+@opts MyRouter.init([])
+
+# Create a test connection
+conn = conn(:get, "/hello")
+
+# Invoke the plug
+conn = MyRouter.call(conn, @opts)
+
+6. Plug.Logger
+
+A plug for logging basic request information in the format:
+
+plug Plug.Logger, log: :debug
+
+7. Plug.Builder
+
+To be precise, do not do this:
+
+plug Plug.Parsers, builder_opts()
+
+Instead do this:
+
+plug :custom_plug_parsers, builder_opts()
+defp custom_plug_parsers(conn, opts) do
+  Plug.Parsers.call(conn, Plug.Parsers.init(opts))
+end
+
+中断 pipeline，Plug.Logger 不会被调用
+
+plug :stopper
+plug Plug.Logger
+
+def stopper(conn, _opts) do
+  halt(conn)
+end
+
+Over HTTPs 
+https://hexdocs.pm/plug/https.html#getting-started 
+
+lsof -i:8000 | grep beam | awk '{print $2}' | xargs kill -9
+
+? 类似 mix watch 的命令，自动 reload module 
+
+? exit plug, beam still running
+
+Libs:
+
+ranch
+cowboy 
+
+Refs:
