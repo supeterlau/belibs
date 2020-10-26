@@ -1,0 +1,175 @@
+/Users/lxy/Note/notes/xz_notes/28.txt:196:https://www.smoothterminal.com/articles/guardian-and-phoenix-apis
+/Users/lxy/Note/notes/xz_notes/28.txt:197:https://pragprog.com/book/phoenix14/programming-phoenix-1-4
+/Users/lxy/Note/notes/xz_notes/28.txt:198:https://medium.com/@diamondgfx/debugging-phoenix-with-iex-pry-5417256e1d11
+
+/Users/lxy/Note/notes/xz_notes/17.txt:28:mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+/Users/lxy/Note/notes/xz_notes/seniverse_api_v4.txt:149:https://thoughtbot.com/services/elixir-phoenix
+/Users/lxy/Note/notes/xz_notes/38.txt:407:https://www.jianshu.com/p/6c436d487265 Elixir, OTP, Ecto, 和 Phoenix 免费教程！
+
+
+
+
+
+
+
+
+
+
+/Users/lxy/Note/notes/out_notes/20191123.txt:18:https://elixirforum.com/t/looking-for-full-stack-devs-with-elixir-phoenix-experience-can-be-remote/26347
+/Users/lxy/Note/notes/xz_notes/29.txt:449:phoenix react auth 
+/Users/lxy/Note/notes/xz_notes/28.txt:199:https://elixircasts.io/simplifying-phoenix-controllers-with-action_fallback
+/Users/lxy/Note/notes/xz_notes/28.txt:202:https://hexdocs.pm/phoenix/routing.html#scoped-routes
+/Users/lxy/Note/notes/xz_notes/17.txt:7:Phoenix
+/Users/lxy/Note/notes/xz_notes/17.txt:24:Phoenix generator
+/Users/lxy/Note/notes/xz_notes/39.txt:664:https://hexdocs.pm/phoenix/deployment.html#starting-your-server-in-production
+/Users/lxy/Note/notes/xz_notes/11.txt:128:elixir Phoenix
+/Users/lxy/Note/notes/xz_notes/11.txt:446:https://salttiger.com/functional-web-development-with-elixir-otp-and-phoenix/
+/Users/lxy/Note/notes/xz_notes/init.txt:191:42. 气象头条 / phoenix + crawler
+/Users/lxy/Note/notes/xz_notes/week.txt:85:Phoenix 
+/Users/lxy/Note/notes/xz_notes/week.txt:186:https://hexdocs.pm/phoenix/heroku.html
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:403:Delete 402: Up and Running — Phoenix v1.4.4: https://hexdocs.pm/phoenix/up_and_running.html
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:665:Delete 664: Deploy a Phoenix 1.3 api with Distillery 2.0 and Gigalixir: https://medium.com/@kimchibot64/deploy-a-phoenix-1-3-api-with-distillery-2-0-and-gigalixir-a58e04e51437
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:669:Delete 668: Adding Pages — Phoenix v1.4.6: https://hexdocs.pm/phoenix/adding_pages.html
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:748:Delete 747: Elixir, Phoenix, Absinthe, GraphQL, React, and Apollo: an absurdly deep dive - Zach Schneider: https://schneider.dev/blog/elixir-phoenix-absinthe-graphql-react-apollo-absurdly-deep-dive/
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:854:Delete 853: Elixir/Phoenix: How to use third-party modules in config files? - Stack Overflow: https://stackoverflow.com/questions/36713069/elixir-phoenix-how-to-use-third-party-modules-in-config-files
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:884:Delete 883: Let’s Build |> a Slack Clone with Elixir, Phoenix, and React (part 1 — Project setup): https://medium.com/@benhansen/lets-build-a-slack-clone-with-elixir-phoenix-and-react-part-1-project-setup-3252ae780a1
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:885:Delete 884: A free introduction to Elixir, OTP, Ecto, and Phoenix: https://hackernoon.com/a-free-introduction-to-elixir-otp-ecto-and-phoenix-228d0e994fc1
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:887:Delete 886: How to write a super fast link shortener with Elixir, Phoenix, and Mnesia: https://www.freecodecamp.org/news/how-to-write-a-super-fast-link-shortener-with-elixir-phoenix-and-mnesia-70ffa1564b3c/?source=search_post---------6
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:909:Delete 908: Let’s Build |> a Slack Clone with Elixir, Phoenix, and React (part 2— Backend Authentication) – Medium: https://medium.com/@benhansen/lets-build-a-slack-clone-with-elixir-phoenix-and-react-part-2-backend-authentication-d0a40b474899
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:910:Delete 909: LearnPhoenix.io - Build scalable production apps with Phoenix and React: https://learnphoenix.io/#/?_k=wb31wz
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:911:Delete 910: Craig Code: Phoenix + ReasonReact - Full-Stack Functional Programming: https://craigc0de.blogspot.com/2018/07/phoenix-reasonreact-full-stack.html
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:912:Delete 911: Mix Tasks — Phoenix v1.4.6: https://hexdocs.pm/phoenix/phoenix_mix_tasks.html
+/Users/lxy/Note/notes/xz_notes/ChromeBookmark.txt:918:Delete 917: Elixir Phoenix: Creating An App With Tests (Updated for Phoenix 1.4 and Elixir 1.8): https://medium.brianemory.com/elixir-phoenix-creating-an-app-with-tests-updated-for-phoenix-1-4-f44c66b690f
+/Users/lxy/Note/notes/xz_notes/43.txt:289:https://lobotuerto.com/blog/building-a-json-api-in-elixir-with-phoenix/
+/Users/lxy/Note/notes/xz_notes/42.txt:110:https://shift.infinite.red/phoenixs-liveview-client-side-elixir-at-last-2280716ae791 Phoenix’s LiveView: Client-Side Elixir At Last? [The project hasn’t been released yet,]
+/Users/lxy/Note/notes/xz_notes/42.txt:270:phoenix name+password
+/Users/lxy/Note/notes/xz_notes/42.txt:373:https://medium.com/velotio-perspectives/creating-graphql-apis-using-elixir-phoenix-and-absinthe-486ff38f2549
+/Users/lxy/Note/notes/xz_notes/42.txt:374:https://medium.com/everydayhero-engineering/create-an-elixir-phoenix-api-part-2-generate-an-api-swagger-specification-a931536f4c8d
+/Users/lxy/Note/notes/xz_notes/42.txt:559:https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c
+/Users/lxy/Note/notes/xz_notes/42.txt:669:https://medium.com/free-code-camp/how-to-write-a-super-fast-link-shortener-with-elixir-phoenix-and-mnesia-70ffa1564b3c
+/Users/lxy/Note/notes/xz_notes/41.txt:626:- phoenix 
+/Users/lxy/Note/notes/xz_notes/41.txt:631:  https://elixirforum.com/t/will-elixirscript-become-a-good-alternative-of-elm-for-phoenix-projects/9437/4
+/Users/lxy/Note/notes/xz_notes/45.txt:31:  https://blog.kiprosh.com/developing-a-slack-bot-in-elixir-phoenix/
+/Users/lxy/Note/notes/xz_notes/44.txt:373:https://hexdocs.pm/phoenix/Phoenix.Router.html
+/Users/lxy/Note/notes/xz_notes/44.txt:756:https://www.manning.com/books/phoenix-in-action
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:77:https://render.com/docs/deploy-phoenix
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:861:    file:///Users/liuxiangyu/Workplace/bundle/phoenix/index.html
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:1110:file:///Users/liuxiangyu/Workplace/bundle/phoenix/index.html
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:1199:https://hexdocs.pm/phoenix/phoenix_mix_tasks.html
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:1221:https://github.com/imeraj/Phoenix_rumbl
+/Users/lxy/Note/notes/xz_notes/bookmarks.txt:1223:https://itnext.io/user-authentication-with-guardian-for-phoenix-1-3-web-apps-e2064cac0ec1
+/Users/lxy/Note/notes/xz_notes/34.txt:516:Elixir & Phoenix 
+/Users/lxy/Note/notes/xz_notes/34.txt:521:phoenixtutorial.org
+/Users/lxy/Note/notes/xz_notes/20.txt:17:    phoenix 
+/Users/lxy/Note/notes/xz_notes/20.txt:230:    https://hexdocs.pm/phoenix/up_and_running.html
+/Users/lxy/Note/notes/xz_notes/20.txt:231:    https://hexdocs.pm/phoenix/phoenix_mix_tasks.html#ecto-specific-mix-tasks
+/Users/lxy/Note/notes/xz_notes/20.txt:232:    https://medium.brianemory.com/elixir-phoenix-creating-an-app-part-1-the-setup-6626264be03
+/Users/lxy/Note/notes/xz_notes/21.txt:83:    https://phoenixframework.org/blog/the-road-to-2-million-websocket-connections
+/Users/lxy/Note/notes/xz_notes/21.txt:84:    https://dockyard.com/blog/2017/05/19/optimizing-elixir-and-phoenix-with-ets
+/Users/lxy/Note/notes/xz_notes/21.txt:237:    phoenix 
+/Users/lxy/Note/notes/xz_notes/21.txt:418:## Phoenix 
+/Users/lxy/Note/notes/xz_notes/35.txt:277:elixir simple framework (smaller than phoenix)
+/Users/lxy/Note/notes/xz_notes/35.txt:354:https://hexdocs.pm/phoenix/contexts.html#thinking-about-design
+/Users/lxy/Note/notes/xz_notes/35.txt:520:https://stackoverflow.com/questions/36713069/elixir-phoenix-how-to-use-third-party-modules-in-config-files
+/Users/lxy/Note/notes/xz_notes/37.txt:223:https://stackoverflow.com/questions/47405985/how-to-assert-two-maps-in-phoenix-controller-testing-with-pattern-matching
+/Users/lxy/Note/notes/xz_notes/36.txt:158:https://elixirforum.com/t/phoenix-is-not-your-application-questions/735
+/Users/lxy/Note/notes/xz_notes/36.txt:160:https://elixirforum.com/t/would-you-recommend-using-mongodb-with-phoenix-with-current-driver-status-in-mind/11721/5
+/Users/lxy/Note/notes/xz_notes/22.txt:266:https://medium.com/@benhansen/lets-build-a-slack-clone-with-elixir-phoenix-and-react-part-1-project-setup-3252ae780a1
+/Users/lxy/Note/notes/xz_notes/22.txt:270:    Phoenix 1.2.1
+/Users/lxy/Note/notes/xz_notes/22.txt:283:        (phoenix app)
+/Users/lxy/Note/notes/xz_notes/22.txt:289:mix phoenix.new sling --no-html --no-brunch
+/Users/lxy/Note/notes/xz_notes/22.txt:321:https://timber.io/blog/a-gentle-introduction-to-graphql-with-elixir-and-phoenix/
+/Users/lxy/Note/notes/xz_notes/22.txt:366:https://www.poeticoding.com/step-by-step-tutorial-to-build-a-phoenix-app-that-supports-user-uploads/
+/Users/lxy/Note/notes/xz_notes/22.txt:409:https://schneider.dev/blog/elixir-phoenix-absinthe-graphql-react-apollo-absurdly-deep-dive/
+/Users/lxy/Note/notes/xz_notes/22.txt:410:https://pragmaticstudio.com/unpacked-full-stack-graphql-with-absinthe-phoenix-react
+/Users/lxy/Note/notes/xz_notes/22.txt:411:https://medium.brianemory.com/elixir-phoenix-creating-an-app-part-1-the-setup-6626264be03
+/Users/lxy/Note/notes/xz_notes/26.txt:5:Phoenix API
+/Users/lxy/Note/notes/xz_notes/26.txt:233:https://salttiger.com/phoenix-in-action/
+/Users/lxy/Note/notes/xz_notes/33.txt:250:https://dennisbeatty.com/2019/04/24/how-to-create-a-todo-list-with-phoenix-liveview.html
+/Users/lxy/Note/notes/xz_notes/33.txt:251:https://shift.infinite.red/phoenix-liveview-round-up-the-story-so-far-3cbb1648e940
+/Users/lxy/Note/notes/xz_notes/33.txt:252:https://shift.infinite.red/phoenixs-liveview-client-side-elixir-at-last-2280716ae791
+/Users/lxy/Note/notes/xz_notes/33.txt:253:https://medium.com/coding-artist/full-stack-react-with-phoenix-chapter-1-why-bother-d3c4a38846cf
+/Users/lxy/Note/notes/xz_notes/33.txt:254:https://medium.com/@resir014/a-phoenix-react-initial-setup-that-actually-works-c943e48f1e9e
+/Users/lxy/Note/notes/xz_notes/33.txt:255:https://github.com/blaze33/elixir-phoenix-react-redux-todo-list
+/Users/lxy/Note/notes/xz_notes/33.txt:256:https://blog.openbloc.fr/elixir-phoenix-web-development-101-todo-app/
+/Users/lxy/Note/notes/xz_notes/33.txt:331:Phoenix auth package
+/Users/lxy/Note/notes/xz_notes/33.txt:454:React-like library Phoenix LiveView
+/Users/lxy/Note/notes/xz_notes/27.txt:120:https://www.amberbit.com/blog/2018/7/24/when-web-requests-fail-in-elixir-and-phoenix/
+/Users/lxy/Note/notes/xz_notes/31.txt:117:https://thoughtbot.com/blog/testing-a-phoenix-elixir-json-api
+/Users/lxy/Note/notes/xz_notes/31.txt:119:https://whatdidilearn.info/2018/02/25/phoenix-authentication-and-authorization-using-plugs.html
+/Users/lxy/Note/notes/xz_notes/31.txt:120:https://medium.com/@a4word/building-small-elixir-services-using-ecto-without-phoenix-1aba00b53e54
+/Users/lxy/Note/notes/xz_notes/31.txt:124:https://medium.com/@alves.lcs/phoenix-ecto-preload-can-be-evil-96f877fb52f5
+/Users/lxy/Note/notes/xz_notes/25.txt:16:phoenix api project
+/Users/lxy/Note/notes/xz_notes/25.txt:74:mix phoenix.new api --no-html --no-brunch
+/Users/lxy/Note/notes/xz_notes/25.txt:138:https://medium.com/@Stephanbv/elixir-phoenix-lets-code-authentication-todo-application-part-1-599ee94cd04d
+/Users/lxy/Note/notes/xz_notes/25.txt:145:https://github.com/phoenixframework/phoenix/blob/master/lib/mix/phoenix/context.ex
+/Users/lxy/Note/notes/xz_notes/25.txt:231:https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c
+/Users/lxy/Note/notes/xz_notes/25.txt:244:https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c
+/Users/lxy/Note/notes/xz_notes/19.txt:104:https://github.com/phoenixframework/phoenix_live_reload
+/Users/lxy/Note/notes/xz_notes/19.txt:105:https://hexdocs.pm/phoenix/Phoenix.CodeReloader.html
+/Users/lxy/Note/notes/xz_notes/19.txt:205:Elixir Phoenix: Creating An App With Tests (Part 1: The Setup)
+/Users/lxy/Note/notes/xz_notes/19.txt:206:https://medium.brianemory.com/elixir-phoenix-creating-an-app-part-1-the-setup-6626264be03
+/Users/lxy/Note/notes/xz_notes/19.txt:208:Deploy a simple Phoenix 1.3 api with Distillery 2.0 and basic_auth to Gigalixir
+/Users/lxy/Note/notes/xz_notes/19.txt:209:https://medium.com/@kimchibot64/deploy-a-phoenix-1-3-api-with-distillery-2-0-and-gigalixir-a58e04e51437
+/Users/lxy/Note/notes/xz_notes/19.txt:538:https://hackernoon.com/behind-the-magic-of-phoenix-livereload-aa007995aa0f
+/Users/lxy/Note/notes/xz_notes/19.txt:686:Elixir Phoenix
+/Users/lxy/Note/notes/xz_notes/18.txt:179:https://medium.com/velotio-perspectives/creating-graphql-apis-using-elixir-phoenix-and-absinthe-486ff38f2549
+/Users/lxy/Note/notes/xz_notes/24.txt:280:https://randomoutput.xyz/blog/phoenix-api-only-project/
+/Users/lxy/Note/notes/xz_notes/24.txt:701:https://medium.com/@toddresudek/caching-in-an-elixir-phoenix-app-a499cdf91046
+/Users/lxy/Desktop/daily/20200309.txt:51:  https://medium.com/3-elm-erlang-elixir/how-to-deploying-phoenix-application-on-ubuntu-293645f38145
+/Users/lxy/Desktop/daily/20200309.txt:56:  https://runninginproduction.com/podcast/3-learn-elixir-and-phoenix-by-building-things-over-at-alchemist-camp
+/Users/lxy/Desktop/daily/20200309.txt:57:  https://josv.me/tutorials/vuephoenix/client_server_blog_12/
+/Users/lxy/Desktop/daily/20200718.txt:50:https://www.reddit.com/r/elixir/comments/55bjga/would_elixir_phoenix_be_suitable_for_an_api/
+/Users/lxy/Desktop/daily/20200526.txt:27:https://dockyard.com/blog/2019/09/06/use-phoenix-to-integrate-janus-webrtc-in-web-apps
+/Users/lxy/Desktop/daily/20200526.txt:28:https://hashrocket.com/blog/posts/revisiting-a-video-chat-application-with-phoenix-and-webrtc
+/Users/lxy/Desktop/daily/20200526.txt:29:https://hashrocket.com/blog/posts/implementing-video-chat-in-a-phoenix-application-with-webrtc
+/Users/lxy/Desktop/daily/20200526.txt:47:An open source CMS built with Elixir and the Phoenix Framework.
+/Users/lxy/Desktop/daily/20200330.txt:223:phoenix elixir rest api 
+/Users/lxy/Desktop/daily/20200330.txt:229:  (Phoenix generator
+/Users/lxy/Desktop/daily/20200330.txt:285:/Users/liuxiangyu/Workplace/example/phoenix_elixir/rest_api
+/Users/lxy/Desktop/daily/20200330.txt:292:DESIGNING AND WRITING A BASIC AUTHENTICATION API WITH PHOENIX AND ELIXIR
+/Users/lxy/Desktop/daily/20200330.txt:293:https://sealas.at/blog/2018-01/designing-and-writing-a-basic-authentication-api-with-phoenix-and-elixir-auth-part-3/
+/Users/lxy/Desktop/daily/20200330.txt:300:Building a RESTful API Backend with Authentication using Elixir Phoenix 2018
+/Users/lxy/Desktop/daily/20200330.txt:301:https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c
+/Users/lxy/Desktop/daily/20200330.txt:303:Ueberauth and guardian setup for a Phoenix rest API 2018
+/Users/lxy/Desktop/daily/20200424.txt:5:https://medium.com/@Mike_Andr/building-real-time-search-with-phoenix-liveview-8b7c5f2374e5 无完整示例
+/Users/lxy/Desktop/daily/20200424.txt:7:https://github.com/phoenixframework/phoenix_live_view
+/Users/lxy/Desktop/daily/20200424.txt:8:https://elixirschool.com/blog/phoenix-live-view/
+/Users/lxy/Desktop/daily/20200424.txt:11:https://dockyard.com/blog/2016/03/25/what-makes-phoenix-presence-special-sneak-peek
+/Users/lxy/Desktop/daily/20200424.txt:16:https://medium.com/grandcentrix/state-management-with-phoenix-liveview-and-liveex-f53f8f1ec4d7
+/Users/lxy/Desktop/daily/20200424.txt:27:https://medium.com/@Mike_Andr/building-real-time-search-with-phoenix-liveview-8b7c5f2374e5
+/Users/lxy/Desktop/daily/20200424.txt:33:add LiveView {:phoenix_live_view, "> 0.0.0"}
+/Users/lxy/Desktop/daily/20200419.txt:55:Elixir PhoenixForum
+/Users/lxy/Desktop/daily/20200422.txt:250:phoenix elixir rest api 
+/Users/lxy/Desktop/daily/20200422.txt:256:  (Phoenix generator
+/Users/lxy/Desktop/daily/20200422.txt:312:/Users/liuxiangyu/Workplace/example/phoenix_elixir/rest_api
+/Users/lxy/Desktop/daily/20200422.txt:319:DESIGNING AND WRITING A BASIC AUTHENTICATION API WITH PHOENIX AND ELIXIR
+/Users/lxy/Desktop/daily/20200422.txt:320:https://sealas.at/blog/2018-01/designing-and-writing-a-basic-authentication-api-with-phoenix-and-elixir-auth-part-3/
+/Users/lxy/Desktop/daily/20200422.txt:327:Building a RESTful API Backend with Authentication using Elixir Phoenix 2018
+/Users/lxy/Desktop/daily/20200422.txt:328:https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c
+/Users/lxy/Desktop/daily/20200422.txt:330:Ueberauth and guardian setup for a Phoenix rest API 2018
+/Users/lxy/Desktop/daily/20200218.txt:1:https://schneider.dev/blog/elixir-phoenix-absinthe-graphql-react-apollo-absurdly-deep-dive/
+/Users/lxy/Desktop/daily/20200420.txt:129:https://hashrocket.com/blog/posts/revisiting-a-video-chat-application-with-phoenix-and-webrtc
+/Users/lxy/Desktop/daily/20200628.txt:34:https://www.reddit.com/r/elixir/comments/48ke69/any_reason_why_elixirphoenix_did_so_badly_in/d0ko6ai/
+/Users/lxy/Desktop/daily/20200831.txt:3:https://stackoverflow.com/questions/48421429/phoenix-umbrella-compile-order macros - Phoenix umbrella compile order - Stack Overflow
+/Users/lxy/Desktop/daily/20200401.txt:50:https://dev.to/mrispoli24/elixir-phoenix-vs-serverless-node-bip
+/Users/lxy/Desktop/daily/20200312.txt:14:# phoenix liveview 
+/Users/lxy/Desktop/daily/20200312.txt:15:https://curiosum.dev/blog/elixir-phoenix-liveview-messenger-part-2
+/Users/lxy/Desktop/daily/20200312.txt:17:https://dockyard.com/blog/2018/12/12/phoenix-liveview-interactive-real-time-apps-no-need-to-write-javascript
+/Users/lxy/Desktop/daily/20200312.txt:18:https://dockyard.com/blog/2019/09/06/whats-new-and-next-for-phoenix-liveview
+
+
+/Users/lxy/Desktop/daily/20200312.txt:20:https://elixirforum.com/t/surface-a-component-based-library-for-phoenix-liveview/27671
+
+
+/Users/lxy/Desktop/daily/20200312.txt:22:An experimental component based library for Phoenix LiveView
+
+
+
+
+
+/Users/lxy/Desktop/daily/20200515.txt:161:  https://hexdocs.pm/phoenix/directory_structure.html#the-lib-hello-directory
+
+
+
+
