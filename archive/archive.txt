@@ -1,0 +1,3 @@
+wails
+  HelloWorld size 11M
+  based on webview, not support menu
