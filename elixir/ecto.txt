@@ -4,6 +4,8 @@ mix new libs_tour --umbrella
 cd libs_tour/apps
 mix new ecto_tour --module EctoTour --sup
 
+https://hexdocs.pm/ecto/
+
 0. Ecto: Getting Started
 
 > mix new friends --sup
@@ -266,7 +268,25 @@ import_config "#{Mix.env()}.exs"
 
   - 用 ExUnit CaseTemplate 为所有测试创建
 
+    test/support/repo_case.exs 
+
+    需要修改 mix.exs 将文件加入编译
+
   - 或为测试单独建立连接
+
+How-To 
+
+创建需要的表 
+
+mix ecto.gen.migration create_posts_tags
+
+创建 schema 
+  lib/ecto_tour/post.ex 
+  lib/ecto_tour/tag.ex
+
+seed 
+ 
+mix ecto.migrate
 
 
 - Seed 数据库
