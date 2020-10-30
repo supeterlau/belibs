@@ -42,6 +42,7 @@ keyword
   https://blog.webjeda.com/optimize-jekyll-seo/ 10 Must do Jekyll SEO optimizations | Webjeda
 
 百度统计
+谷歌 GA 
 hotjar
 
   https://mycyberuniverse.com/add-hotjar-tracking-to-jekyll-website.html Add Hotjar tracking to a Jekyll website
