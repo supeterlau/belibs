@@ -1,0 +1,333 @@
+https://hexdocs.pm/phoenix/up_and_running.html Up and Running — Phoenix v1.5.4
+
+# Document
+
+https://hexdocs.pm/phoenix/up_and_running.html Up and Running — Phoenix v1.5.4
+
+## install
+
+https://hexdocs.pm/phoenix/installation.html Installation — Phoenix v1.5.4
+
+mix archive.install hex phx_new 1.5.4
+
+## Up and Running 
+
+mix help phx.new 
+
+--live 添加 liveview 
+--no-webpack 不是 webpack 
+--verbose
+
+mix phx.new phx_tour --live --no-webpack --verbose
+
+cannot generate --live project with --no-html or --no-webpack. LiveView requires HTML and webpack
+
+创建项目
+
+mix phx.new phx_tour --live --verbose
+
+配置数据库
+  config/dev.exs 
+
+创建数据库
+  mix ecto.create 
+
+启动 app
+  mix phx.server
+
+The --no-halt flag is automatically added
+
+## 文件结构
+
+lib/project_name 主要业务逻辑部分
+
+lib/project_name_web: web 相关部分
+  controllers C in MVC 
+  templates
+  views V in MVC , M 在 lib/project_name 中
+  channels
+
+  endpoint.ex http 请求入口，处理请求数据，转给 router.ex 
+
+  router.ex 
+    router 根据规则将请求发给对应 controllers, 然后 views 利用 templates 显示结果
+
+  telemetry.ex 
+    收集信息，发送监控请求到应用
+
+  gettext.ex 
+    提供国际化语言
+
+## 请求生命周期
+
+1. 增加新页面
+
+BROWSER ADDRESS BAR	VERB	PATH
+http://localhost:4000	GET	/
+http://localhost:4000/hello	GET	/hello
+http://localhost:4000/hello/world	GET	/hello/world
+
+通过匹配 verb/path 对决定使用哪个 controller 处理
+
+- 添加 route 
+
+route 将 verb/path 对，对应到 controller/action 对 
+
+controller 是 Elixir 模块
+action 是 Elixir 函数
+
+get "/", PageController, :index 
+
+将 {"/", :get} 对应到 {PageController, :index}
+
+PageController
+
+--live 后增加的是 
+
+live "/", PageLive, :index
+
+- 添加 controller 
+
+创建 lib/hello_web/controllers/hello_controller.ex 文件
+
+HelloWeb.HelloController 模块
+
+index/2 函数
+
+conn 保存 request 信息
+
+params request parameters
+
+render(conn, "index.html") 使用 conn 信息渲染 index.html 
+
+默认 Phoenix 到 HelloWeb.HelloView 找模块处理 "index.html"
+
+render(conn, :index) 也可以，此时根据 Accept headers 选择返回类型是
+
+  index.htm 或 index.json 
+
+- 新 view 
+
+view 作为展示层
+
+index.html 表示返回 HTML 页面
+
+对应文件位于 lib/hello_web/templates/hello/index.html.eex 
+
+eex 是 Elixir 的模板引擎
+
+Phoenix 增强 EEx 避免 XSS 
+
+Phoenix enhances EEx to include automatic escaping of values. This protects you from security vulnerabilities like Cross-Site-Scripting 
+
+开发中不需要重启服务器
+
+hot code reloading! 
+
+新添加的页面被加入到 layout app.html 中，提供基本的样式
+
+2. endpoint 到 views 
+
+endpoint.ex 里引入很多 plug 
+
+每个 Plug 都定义一些请求处理流程
+
+其中最后一个正是 plug HelloWeb.Router 
+
+这样就把接下来的处理步骤交给 router.ex 
+
+映射 verb/path 到 controller/action (Elixir module/function) 
+
+controller 调用 view 渲染 template 
+
+这些组织方式，使得应用复杂后每个部分的功能依然清晰。
+
+- endpoint Phoenix.Endpoint
+
+- router Phoenix.Router
+
+- controller Phoenix.Controller
+
+- view Phoenix.View
+
+(- template)
+
+3. 另一个页面
+
+- 新 route 
+
+仅创建新 action，复用 HelloController 
+
+"/hello/:messenger" 语法 占位单词 messenger 将转为变量名，值为实际路径对应的值
+
+- 新 action 
+
+def show(conn, params) do 
+end 
+
+params 为 %{"messenger" => messenger}
+
+传入 index.html 的变量用 keyword list 传入
+
+  render(conn, "show.html", messenger: messenger)
+
+- 新 template 
+
+EEx 语法 <%= @messenger %> 被称作 controller 赋值给 view 
+
+## Plug 
+
+Plug 是 Phoenix 的 HTTP 层
+## Routing
+
+## controllers
+
+## Views 和 templates 
+
+## Ecto 
+
+## Contexts 
+
+## Mix Tasks 
+
+## Telemetry 
+
+## Channels 
+
+## Presence 
+
+## Test
+
+### Test Contexts 
+
+### Test Controllers 
+
+### Test Channels 
+
+## Deployment 
+
+### Releases 
+
+### Gigalixir 
+
+### Heroku 
+
+### How To
+
+### Custom Error Pages 
+
+### Using SSL 
+
+
+查看全部 route 
+
+mix phx.routes
+
+Tips:
+
+route 必须加 / "/hello/:messenger"
+
+action 函数匹配 params %{"messenger" => messenger}
+
+Template Improve:
+
+- config/dev.exs
+  port 可通过环境变量 PORT 配置
+  支持 dotenv file 
+
+- replace webpack with snowpack 
+./assets
+
+Comment:
+
+Phoenix Dashboard 厉害
+  Enables LiveDashboard only for development
+
+if Mix.env() in [:dev, :test] do
+  import Phoenix.LiveDashboard.Router
+  scope "/" do
+    pipe_through :browser
+    live_dashboard "/dashboard", metrics: PhxTourWeb.Telemetry
+  end
+end
+
+# Combining authentication solutions with Guardian and Phx Gen Auth
+
+https://fullstackphoenix.com/tutorials/combining-authentication-solutions-with-guardian-and-phx-gen-auth
+
+step 1
+
+# Getting started with GraphQL and Absinthe in Phoenix
+
+Projects:
+
+- resume 
+
+- ideahub
+
+- nomadlist china
+
+Libs:
+
+https://hexdocs.pm/telemetry_metrics/Telemetry.Metrics.html Telemetry.Metrics — Telemetry.Metrics v0.5.0
+
+https://github.com/beam-telemetry/telemetry beam-telemetry/telemetry: Dynamic dispatching library for metrics and instrumentations.
+
+https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html#content Phoenix.LiveView — Phoenix LiveView v0.14.4
+
+Sites:
+
+https://fullstackphoenix.com/ Fullstack Phoenix - Tutorials and screencasts for Elixir, Phoenix and LiveView
+https://fullstackphoenix.com/features Fullstack Phoenix - Tutorials and screencasts for Elixir, Phoenix and LiveView
+  Live Featuers are Phoenix LiveView components that you can use in your own project
+https://fullstackphoenix.com/saas-starter-kit
+
+Auth: 
+https://fullstackphoenix.com/tutorials/multi-tenancy-and-authentication-with-pow Multi-tenancy and authentication with Pow
+
+LiveView:
+https://fullstackphoenix.com/tutorials/combine-phoenix-liveview-with-alpine-js Combine Phoenix LiveView with Alpine.js 
+
+Boilerplate:
+https://fullstackphoenix.com/tutorials/introducing-boilerplate-builder Introducing Boilerplate Builder
+
+2020
+
+https://blog.appsignal.com/2020/04/28/configuring-your-elixir-application-at-runtime-with-vapor.html Configuring your Elixir Application at Runtime with Vapor | AppSignal Blog
+
+2019
+
+https://curiosum.dev/blog/elixir-phoenix-liveview-messenger-part-2 Phoenix LiveView Tutorial: Bootstrap Your Messenger App – Curiosum
+
+https://hashrocket.com/blog/posts/revisiting-a-video-chat-application-with-phoenix-and-webrtc Revisiting a Video Chat Application with Phoenix and WebRTC | Hashrocket
+
+https://experimentingwithcode.com/using-bulma-and-sass-in-phoenix/ Using Bulma and Sass in Phoenix
+
+https://experimentingwithcode.com/phoenix-api-authentication-with-pow/ (API)
+
+http://blog.plataformatec.com.br/2016/09/dynamic-forms-with-phoenix/ Dynamic forms with Phoenix « Plataformatec Blog
+
+https://medium.com/innoventes/user-authentication-phoenix-1-4-ebda68016740 User authentication in Phoenix 1.4 | by Maneesh Babu.M | innoventes | Medium (HTML Form)
+
+2018
+
+https://medium.com/@pamit/building-a-restful-backend-with-elixir-phoenix-84fe390975c Building a RESTful API Backend with Authentication using Elixir Phoenix | by Payam Mousavi | Medium
+
+https://medium.com/@kimchibot64/deploy-a-phoenix-1-3-api-with-distillery-2-0-and-gigalixir-a58e04e51437 Deploy a simple Phoenix 1.3 api with Distillery 2.0 and basic_auth to Gigalixir | by not_robby | Medium
+
+https://timber.io/blog/building-a-real-time-app-with-phoenix/ Building a Real-Time App with Phoenix
+
+2016
+
+http://blog.plataformatec.com.br/2016/09/dynamic-forms-with-phoenix/ Dynamic forms with Phoenix « Plataformatec Blog
+
+https://dennisreimann.de/articles/phoenix-deployment-gatling-ubuntu-digital-ocean.html Deploying Phoenix on Ubuntu with Gatling – How To for an automated Phoenix deployment on Digital Ocean
+
+
+https://curiosum.dev/blog/category/elixir Elixir Programming – Curiosum
+https://curiosum.dev/til TIL - Today I Learned – Curiosum
+https://experimentingwithcode.com/ Experimenting With Code
+
+
+https://timber.io/blog/tag/elixir/ Elixir - Timber Blog
+https://dennisreimann.de/articles.html Articles: Frontend development with JavaScript, CSS and HTML • Dennis Reimann
