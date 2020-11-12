@@ -1,0 +1,12 @@
+Git App
+
+Start:
+
+Install Tauri bundler through Cargo:
+
+$ cargo install tauri-bundler --force
+
+
+Refs:
+
+https://tauri.studio/en/docs/usage/development/integration Tauri Integration | Tauri Studio
