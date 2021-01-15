@@ -12,13 +12,15 @@ bundle exec jekyll serve
 
 命令参数
 
-显示帮助 
+显示帮助
 
 bundle exec jekyll help
 
 启动站点
 
 bundle exec jekyll serve -h
+
+bundle exec jekyll s -h
 
 bundle exec jekyll serve  -P 4040
 
@@ -30,19 +32,42 @@ bundle info --path minima (默认主题) https://jekyllrb.com/docs/themes/#overr
 
 bundle info minima
 
+## CLI usage
+
+jekyll build or jekyll b - Performs a one off build your site to ./_site (by default).
+
+jekyll clean - Removes all generated files: destination folder, metadata file, Sass and Jekyll caches.
+
+jekyll new-theme - Creates a new Jekyll theme scaffold
+
+jekyll help
+jekyll help build
+
+jekyll build & jekyll b
+
+## Options
+
+https://jekyllrb.com/docs/configuration/
+
+https://jekyllrb.com/docs/configuration/options/
+
+source: DIR
+
+destination: DIR
+
 ## 主题
 
 ## 插件
 
 ## front matter
 
-## SEO 
+## SEO
 
 keyword
   https://blog.webjeda.com/optimize-jekyll-seo/ 10 Must do Jekyll SEO optimizations | Webjeda
 
 百度统计
-谷歌 GA 
+谷歌 GA
 hotjar
 
   https://mycyberuniverse.com/add-hotjar-tracking-to-jekyll-website.html Add Hotjar tracking to a Jekyll website
@@ -67,6 +92,6 @@ favicon
   cd assets/images
   unzip /path/to/favicon_package_v0.16.zip
 
-静态文件 
+静态文件
 
   https://jekyllrb.com/docs/static-files/ /assets/img/image.jpg
