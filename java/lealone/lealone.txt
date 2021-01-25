@@ -1,0 +1,7 @@
+https://github.com/lealone/Lealone-Examples lealone/Lealone-Examples: 用于演示 Lealone 各类功能模块的用法
+
+https://github.com/lealone/Lealone-Docs/blob/master/%E5%BA%94%E7%94%A8%E6%96%87%E6%A1%A3/%E4%BD%BF%E7%94%A8RPC%E6%A1%86%E6%9E%B6%E6%9D%A5%E5%BC%80%E5%8F%91web%E5%BA%94%E7%94%A8.md Lealone-Docs/使用RPC框架来开发web应用.md at master · lealone/Lealone-Docs
+
+https://github.com/lealone/Lealone-Examples/blob/main/rpc-demo/web/lealone-5.0.0.js Lealone-Examples/lealone-5.0.0.js at main · lealone/Lealone-Examples
+
+https://github.com/lealone/Lealone-Examples/blob/main/petstore/petstore-web/web/user/js/hooks.js Lealone-Examples/hooks.js at main · lealone/Lealone-Examples
