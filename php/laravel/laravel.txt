@@ -1,0 +1,171 @@
+配置 Laravel 开发环境:
+
+https://laradock.io/getting-started/
+
+git clone https://github.com/laradock/laradock.git
+
+* laradock
+* project-z
+
+cp env-example .env 
+
+修改 APP_CODE_PATH_HOST=../project
+
+docker-compose up -d nginx mysql
+
+# Laravel: Tour Todo App https://www.parthpatel.net/laravel-tutorial-for-beginner
+
+1. 创建项目
+
+docker-compose exec --user=laradock workspace bash
+
+安装 composer 
+
+https://developer.aliyun.com/composer
+
+composer -vvv require alibabacloud/sdk
+
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+
+composer global require “laravel/installer”
+
+echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bash_profile
+
+laravel new projectname
+
+laravel 项目使用 MVC 架构
+
+Models
+
+Views
+
+Controllers 
+
+2. 配置数据库
+
+DB_CONNECTION=sqlite
+
+create a file – database/database.sqlite
+
+3. 安装认证 package 
+
+composer require laravel/ui
+
+php artisan ui bootstrap --auth 
+
+  使用 bootstrap 作为前端
+
+run "npm install && npm run dev" to compile your fresh scaffolding
+
+Generate your application encryption key using 
+
+  php artisan key:generate
+
+创建 task 表
+
+php artisan make:migration create_tasks_table --create=tasks
+
+添加 foreign key 
+
+$table->integer('user_id')->unsigned()->index();
+
+执行迁移 
+
+php artisan migrate
+
+4. Eloquent
+
+Eloquent is Laravel’s ORM which provides simple Active-record Implementation for working with database. 
+
+生成 model 文件
+
+php artisan make:model Task
+
+生成文件 ./app/Task.php
+
+添加 Relationship
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
+User.php 中 
+
+public function tasks()
+{
+    return $this->hasMany(Task::class);
+}
+
+Artisan Tinker
+
+  Laravel 提供的 command-line interface，其中的命令 tinker 可以通过命令行与整个 Laravel 应用交互
+
+  php artisan tinker 
+
+App\User::first()->tasks; 获取第一个用户的 tasks 
+
+5. 控制器
+
+生成控制器 
+
+php artisan make:controller TasksController
+
+生成 app/Http/Controllers/TasksController.php
+
+6. 路由 
+
+现在需要以下路由
+
+Login : added by default by Laravel
+
+Register : added by default by Laravel
+
+Display list of all our tasks 
+
+Add new task 
+
+Delete task 
+
+编辑 LoginController.php and RegisterController.php
+
+路由文件夹中有各种路由
+
+  /routes/web.php 
+  /routes/api.php 
+
+7. 视图模板
+
+视图存放在 resources/views/task 下
+
+list.blade.php 登录后显示 tasks 
+add.blade.php 添加 task
+edit.blade.php 编辑 task 
+
+layout views/layouts/app.blade.php 
+
+8. 绑定 route model 
+
+inject a model instance into your routes
+
+在视图里通过 model 获取值
+
+9. 注册后测试
+
+laravel 
+laravel@example.com
+12345678
+
+
+? Deploy to heroku
+
+# laradock 配置
+
+http_proxy=http://127.0.0.1:8001 docker-compose up -d nginx mysql
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh
+
+https://segmentfault.com/a/1190000021076776 解决 Laradock 拉取镜像并创建容器时非常慢的问题 - 个人文章 - SegmentFault 思否
+
+host.docker.internal
+https://stackoverflow.com/questions/31324981/how-to-access-host-port-from-docker-container# How to access host port from docker container - Stack Overflow
