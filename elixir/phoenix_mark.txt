@@ -1,10 +1,10 @@
-/Users/lxy/Note/notes/xz_notes/28.txt:196:https://www.smoothterminal.com/articles/guardian-and-phoenix-apis
-/Users/lxy/Note/notes/xz_notes/28.txt:197:https://pragprog.com/book/phoenix14/programming-phoenix-1-4
-/Users/lxy/Note/notes/xz_notes/28.txt:198:https://medium.com/@diamondgfx/debugging-phoenix-with-iex-pry-5417256e1d11
+https://www.smoothterminal.com/articles/guardian-and-phoenix-apis
+https://pragprog.com/book/phoenix14/programming-phoenix-1-4
+https://medium.com/@diamondgfx/debugging-phoenix-with-iex-pry-5417256e1d11
 
-/Users/lxy/Note/notes/xz_notes/17.txt:28:mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
-/Users/lxy/Note/notes/xz_notes/seniverse_api_v4.txt:149:https://thoughtbot.com/services/elixir-phoenix
-/Users/lxy/Note/notes/xz_notes/38.txt:407:https://www.jianshu.com/p/6c436d487265 Elixir, OTP, Ecto, 和 Phoenix 免费教程！
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+https://thoughtbot.com/services/elixir-phoenix
+https://www.jianshu.com/p/6c436d487265 Elixir, OTP, Ecto, 和 Phoenix 免费教程！
 
 
 
