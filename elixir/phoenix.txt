@@ -1,4 +1,4 @@
-https://hexdocs.pm/phoenix/up_and_running.html Up and Running — Phoenix v1.5.4
+https://hexdocs.pm/phoenix/up_and_running.html Up and Running — Phoenix
 
 # Document
 
@@ -6,9 +6,17 @@ https://hexdocs.pm/phoenix/up_and_running.html Up and Running — Phoenix v1.5.4
 
 ## install
 
-https://hexdocs.pm/phoenix/installation.html Installation — Phoenix v1.5.4
+mix hex.config mirror_url https://hexpm.upyun.com
 
-mix archive.install hex phx_new 1.5.4
+command to install Hex (If you have Hex already installed, it will upgrade Hex to the latest version):
+
+mix local.hex
+
+https://hexdocs.pm/phoenix/installation.html Installation — Phoenix 
+
+mix archive.install hex phx_new 1.5.7
+
+mix phx.new -v
 
 ## Up and Running 
 
@@ -17,8 +25,6 @@ mix help phx.new
 --live 添加 liveview 
 --no-webpack 不是 webpack 
 --verbose
-
-mix phx.new phx_tour --live --no-webpack --verbose
 
 cannot generate --live project with --no-html or --no-webpack. LiveView requires HTML and webpack
 
