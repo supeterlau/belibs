@@ -65,6 +65,11 @@ delete-tables --table-name <string>
 
   https://stackoverflow.com/questions/31425838/bash-with-aws-cli-unable-to-locate-credentials aws cli - Bash with AWS CLI - unable to locate credentials - Stack Overflow
 
+  credit 文件位置
+  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+  ~/.aws/credentials
+  ~/.aws/config
+  
 命名规则和数据类型
 
   https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html Naming Rules and Data Types - Amazon DynamoDB
