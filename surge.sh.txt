@@ -1,0 +1,17 @@
+https://surge.sh/ Static web publishing for Front-End Developers
+
+surge whoami
+
+surge list
+
+surge teardown
+
+# Deploy 
+
+surge path/to/my-project my-custom-domain.com
+
+echo your-own-domain.com > CNAME
+
+
+
+# SEO 
