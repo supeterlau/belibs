@@ -85,6 +85,28 @@ Plug 不一定做路由，也可以进行其他数据处理，拦截请求进行
 
 - 显示模板
 
+templates
+
+使用模板 
+
+<% %> 中是 Elixir 代码
+<%= %> 显示执行结果
+<%# %> 不显示执行结果，可作为注释使用
+
+content = EEx.eval_file(template_path, [user_id: user_id])
+
+设置 content-type 
+
+Plug.Conn.put_resp_header("ontent-type", "text/html")
+
+conn
+|> Plug.Conn.put_resp_content_type("text/html")
+|> Plug.Conn.send_resp(200, content)
+
+对模板进行预编译
+
+- 数据库 Sqlite3
+
 https://elixirforum.com/t/so-what-is-the-problem-with-sqlite/1602 So what is the problem with sqlite? - Phoenix Forum / Questions / Help - Elixir Programming Language Forum
 
 https://github.com/elixir-sqlite/sqlite_ecto2 elixir-sqlite/sqlite_ecto2: Sqlite3 adapter for Ecto 2.2.x
@@ -136,4 +158,5 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/demo](https://hexdocs.pm/demo).
+
 

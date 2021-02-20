@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>User Profile</h1>
+    <p>Requested info for user id <%= user_id %>.</p>
+    <p>run code 1+1= <%= 1+1 %></p>
+    <%= if user_id == "0" do %>
+      <%# user 0 is admin. (comment) %>
+      User zero is admin.
+    <% end %>
+  </body>
+</html>
