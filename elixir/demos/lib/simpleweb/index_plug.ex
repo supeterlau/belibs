@@ -1,4 +1,8 @@
 defmodule SimpleWeb.IndexRouter do
+  @module_doc """
+  {:ok, _} = Plug.Adapters.Cowboy.http SimpleWeb.IndexRouter, []
+  """
+
   alias SimpleWeb.UserRouter
   use SimpleWeb.Router
 

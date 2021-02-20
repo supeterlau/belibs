@@ -1,4 +1,8 @@
 defmodule SimpleWeb.SimplePlug do
+  @module_doc """
+  {:ok, _} = Plug.Adapters.Cowboy.http SimpleWeb.SimplePlug, []
+  """
+
   def init(default_opts) do
     IO.puts "starting up #{__MODULE__}"
     default_opts
