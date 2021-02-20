@@ -105,7 +105,53 @@ conn
 
 对模板进行预编译
 
-- 数据库 Sqlite3
+- 数据库 PostgreSQL/Sqlite3
+
+Phoenix 提供很多快捷命令
+
+https://hexdocs.pm/phoenix/ecto.html Ecto — Phoenix v1.5.7
+
+mix phx.gen.schema User users name:string email:string \
+bio:string number_of_pets:integer
+
+ecto 
+
+{:ecto_sql, "~> 3.0"},
+{:postgrex, ">= 0.0.0"}
+
+生成配置文件
+
+mix ecto.gen.repo -r SimpleWeb.Repo
+
+  生成 config.exs 内容和 lib/simple_web/repo.ex
+
+  config.exs 中添加
+
+   config :demos, ecto_repos: [...]
+
+ecto
+  - pk 类型默认 int (改为 uuidv4 等)
+  - timestamps: created_at updated_at
+
+生成数据库迁移文件
+
+mix ecto.gen.migration create_simple_web_users
+
+顺序问题: 
+
+Ecto 官网
+
+生成 migration 文件 -> 编辑 migration 文件 -> 执行 migrate -> 在 Schema 中使用
+
+mix ecto.gen.migration 并不会根据 Scheme 生成迁移文件
+
+迁移文件路径 priv/repo/migrations
+
+修改 change 函数
+
+mix ecto.migrate
+
+! 添加 ecto 到 supervisor
 
 https://elixirforum.com/t/so-what-is-the-problem-with-sqlite/1602 So what is the problem with sqlite? - Phoenix Forum / Questions / Help - Elixir Programming Language Forum
 
@@ -134,7 +180,11 @@ https://blog.lelonek.me/minimal-elixir-http2-server-64188d0c1f3a Minimal Elixir 
 
 https://powauth.com/ Pow | Pow is a robust, modular, and extendable authentication and user management solution for Phoenix and Plug-based apps.
 
+## phoenix restapi/graphql
+
 ## liveview 
+
+- 添加 liveview 到已有项目
 
 https://itnext.io/a-story-of-phoenix-liveview-writing-a-crud-application-d938e52894d4 A Story of Phoenix LiveView: Writing a CRUD Application | by モハマド Meraj モラー | ITNEXT
 

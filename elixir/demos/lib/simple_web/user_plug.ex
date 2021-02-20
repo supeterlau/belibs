@@ -3,12 +3,12 @@ defmodule SimpleWeb.UserRouter do
   use Router
 
   require EEx
-  EEx.function_from_file :defp, :template_show_user, "lib/simpleweb/templates/show_user.eex", [:user_id]
+  EEx.function_from_file :defp, :template_show_user, "lib/simple_web/templates/show_user.eex", [:user_id]
 
   def route("GET", ["users", user_id], conn) do
     # /users/<user_id>
     # conn |> Plug.Conn.send_resp(200, "Request user @#{user_id}")
-    # content = EEx.eval_file("lib/simpleweb/templates/show_user.eex", [user_id: user_id])
+    # content = EEx.eval_file("lib/simple_web/templates/show_user.eex", [user_id: user_id])
     # 预编译
     content = template_show_user(user_id)
     conn

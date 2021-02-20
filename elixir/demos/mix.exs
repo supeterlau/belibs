@@ -28,6 +28,9 @@ defmodule Demos.MixProject do
   defp deps do
     [
       {:plug_cowboy, "~> 2.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
+
       # {:cowboy, "~> 2.8"},
       # {:plug, "~> 1.11"},
       

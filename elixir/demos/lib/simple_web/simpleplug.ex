@@ -1,5 +1,5 @@
 defmodule SimpleWeb.SimplePlug do
-  @module_doc """
+  @moduledoc """
   {:ok, _} = Plug.Adapters.Cowboy.http SimpleWeb.SimplePlug, []
   """
 

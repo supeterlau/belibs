@@ -1,5 +1,5 @@
 defmodule SimpleWeb.IndexRouter do
-  @module_doc """
+  @moduledoc """
   {:ok, _} = Plug.Adapters.Cowboy.http SimpleWeb.IndexRouter, []
   """
 
