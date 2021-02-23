@@ -1,0 +1,5 @@
+- d2lai 
+
+https://d2l.ai/chapter_preliminaries/index.html
+
+- MIT 分布式课程
