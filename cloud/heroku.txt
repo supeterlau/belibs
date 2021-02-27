@@ -1,0 +1,56 @@
+## CLI 
+
+- 安装
+
+brew tap heroku/brew && brew install heroku
+
+最好不用 npm 安装
+  installation method does not autoupdate and requires you to use your system’s version of Node.js, which may be older than the version Heroku develops the CLI against
+
+- 检查安装
+
+heroku --version
+
+- 登录账户
+
+heroku login
+heroku login --help
+heroku auth:login
+heroku login --browser=firefox
+  启动浏览器登录 
+
+The CLI saves your email address and an API token to ~/.netrc for future use
+
+# 部署
+
+## 部署 Django 
+
+
+
+heroku run bash --app myaplication
+https://stackoverflow.com/questions/35857787/running-bash-on-heroku-wont-work
+
+Golang to Heroku
+https://blog.wu-boy.com/2019/02/deploy-golang-app-to-heroku/
+
+https://medium.com/tarkalabs/docker-deployments-to-heroku-5802b14df4fa
+
+https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa
+
+Host static on Heroku
+
+https://www.huxiu.com/article/135085.html
+https://www.huxiu.com/article/319114.html
+
+heroku stack:set heroku-18 (正常用 heroku create)
+切换 docker 到普通
+
+git push -f heroku master
+
+heroku ps:scale web=1
+
+heroku ps
+
+heroku open
+
+heroku run bash -a pure-fjord-97245
