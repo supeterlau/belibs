@@ -1,0 +1,25 @@
+## qemu 
+
+brew install qemu nasm (support linux/macos)
+
+https://stackoverflow.com/questions/47235461/how-to-resolve-specify-the-raw-format-explicitly-to-remove-the-restrictions macos - How to resolve "Specify the 'raw' format explicitly to remove the restrictions." in qemu? - Stack Overflow
+
+  -drive file=helloos.img,format=raw,index=0,media=disk
+
+## browsh 
+
+https://www.brow.sh/- Browsh
+
+Browsh is a purely text-based browser that can run in most TTY terminal environments and in any browser. The terminal client is currently more advanced than the browser client.
+
+config file: 
+
+  ${XDG_CONFIG_HOME:-$HOME/.config}/browsh/config.toml
+
+  macOS: $HOME/'Library/Application Support/browsh/config.toml'
+
+find config file:
+
+  browsh --debug
+
+https://www.brow.sh/docs/mosh/ Mosh is better than SSH - Browsh
