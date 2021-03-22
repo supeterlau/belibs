@@ -1,0 +1,19 @@
+测试
+  访问是否通畅
+
+登录
+  https://web.deta.sh/
+
+安装
+  https://docs.deta.sh/docs/cli/install
+
+  macOS: curl -fsSL https://get.deta.dev/cli.sh | sh
+
+CLI login 
+  通过 web 或 $HOME/.deta/tokens
+  
+  deta login
+
+  deta new --node node-app
+
+  yarn add deta express
