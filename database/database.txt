@@ -1,0 +1,48 @@
+- Cassandra
+
+  https://cassandra.apache.org/doc/latest/getting_started/index.html
+
+  https://www.scylladb.com/ ScyllaDB | The Real-Time Big Data Database
+
+- PostgreSQL
+
+  https://www.postgresql.org/docs/12/index.html PostgreSQL: Documentation: 12: PostgreSQL 12.4 Documentation
+
+- Redis
+
+- MySQL
+
+- MongoDB
+
+- TiDB
+
+- H2
+
+https://www.h2database.com/html/download.html
+  sh ./bin/h2.sh （打开 Web UI）
+  
+https://github.com/codefollower/H2-Research
+https://www.jianshu.com/p/4a613dcf182c H2数据库使用指南
+
+indexeddb
+RocksDB/LevelDB/Bitcask/LMDB/WiredTiger
+
+DataBase:
+  https://www.scylladb.com/ ScyllaDB | The Real-Time Big Data Database
+    https://www.scylladb.com/download/?platform=docker ScyllaDB | Scylla Download Center
+  https://cassandra.apache.org/ Apache Cassandra
+  H2 -> Leanlone
+    Workspace/peterlau/codebase/snippet/h2db
+  MySQL
+  PostgreSQL
+  SQLite
+  Redis
+  MongoDB
+  indexedDB
+
+  存储引擎
+
+LMDB
+  https://symas.com/lmdb/ Symas Lightning Memory-mapped Database | Symas Corporation
+
+https://harperdb.io/blog/deep-dive-newsql-databases/ Deep Dive: NewSQL Databases | HarperDB
