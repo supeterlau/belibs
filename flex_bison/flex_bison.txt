@@ -1,0 +1,74 @@
+开发环境配置
+
+# Ch1 简介
+
+1. 词法分析 语法分析
+
+flex bison 生成程序的工具 生成能处理结构化输入的程序
+
+最早的编译器追溯到 20 世纪 50 年代。
+
+使用特别技术分析编译器处理程序源代码的语法
+
+分析工作分为两部分:
+
+  词法分析 lexical analysis / scanning
+
+  语法分析 syntax analysis / parsing
+
+词法分析: 输入分割为有意义的词块 记号 (token)
+
+语法分析: 确定 token 之间关系
+
+输入 alpha = beta + gama;
+
+词法分析 "alpha" "=" "beta" "+" "gama" ";"
+
+语法分析 beta+gama 是表达式，赋值给 alpha 
+
+2. 正则表达式 词法分析
+
+词法分析通常是寻找输入字符的模式 pattern 
+
+一种描述模式的方法是 regular expression
+
+flex 程序由一系列带指令的正则表达式组成
+
+指令: 决定匹配表达式后的动作 action 
+
+流程
+
+  flex 生成词法分析器
+  词法分析器读取输入
+  匹配到输入时执行响应 action 
+
+flex 将正则表达式翻译为高效的内部格式 (DFA 确定有穷自动机 Deteministic Fininte Automation)
+  处理速度与模式的个数和复杂程度无关
+
+fb1-1.l
+
+读入一个文件，报告文件行数 单词数 字符数
+
+flex 程序分三部分
+
+part1 声明，设置选项
+%{ ... %} 中内容被直接拷贝到生成的 C 文件开头
+
+part2 模式 + 动作
+动作是 C 代码
+
+part3 与动作相关的函数，直接拷贝到生成的词法分析器中
+yylex() 调用 flex 提供的词法分析生成器
+
+flex fb1-1.l && cc lex.yy.c && ./a.out < test.txt
+
+realworld wc 对单词定义是不包含空白字符的字符串
+
+[^ \t\n\r\f\v]+ ^ 意味着匹配不在 [] 字符集中的字符
+
+Refs:
+
+-lfl 参数
+  https://github.com/westes/flex/issues/155
+  https://stackoverflow.com/questions/26064096/using-flex-the-lexical-analizer-on-os-x
+  https://stackoverflow.com/questions/52916268/usr-bin-ld-cannot-find-lfl
