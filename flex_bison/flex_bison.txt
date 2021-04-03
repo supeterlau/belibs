@@ -66,7 +66,115 @@ realworld wc 对单词定义是不包含空白字符的字符串
 
 [^ \t\n\r\f\v]+ ^ 意味着匹配不在 [] 字符集中的字符
 
-Refs:
+纯 flex 程序 
+
+fb1-2.l 
+
+flex 优先匹配最长匹配，匹配先出现的模式
+
+Ctrl-D 退出 ^D UNIX 文件结束符 / ^Z for Windows
+
+词法分析器需要 记号流 token stream 
+
+调用 yylex() 读取，识别出记号时，这个记号作为 yylex 的返回值
+
+不够产生记号时，继续调用 yylex() 
+
+产生记号时有两部分内容 记号编号 token number 和 记号值 token's value
+
+记号编号是随机的，一般 零值 表示文件结束 
+
+bison 自动从 258 (避免与文字字符记号冲突) 指派编号，自动创建包含编号的定义 
+
+例如 NUMBER = 258, ADD = 259, ... EOL = 264 
+
+记号值会表示更复杂的内容 名称 数字 字面值 等
+
+// 识别计算机记号 fb-1-4
+
+更复杂的记号编号会定义为 联合类型。不同类型的记号有不同类型的记号值
+
+起源
+  yacc (yet another compiler compiler) -> bison 
+  lex -> flex (fast lexical analyzer generator)
+
+文法和语法分析
+
+  找出并表示记号之间的关系
+
+  一种常用形式 语法树 parse tree 
+
+BNF 文法
+
+需要一定方法来描述语法分析器生成语法树的规则
+
+记号 -> (语法分析器: 基于规则) -> 语法分析树
+
+计算机分析程序最常用的语言是 上下文无关文法 Context-Free Grammar aka. CFG 
+
+自然语言学家称之为 
+
+  短结构文法 Phrase-Structure Grammar
+  3 型语言   Type-3 language 
+
+书写 CFG 的标准格式是 BackusNaur Form aka. BNF 范式
+
+  最初用于描述 Algol60 语法 
+
+<exp> ::= <factor>
+    | <exp> + <factor>
+<factor> ::= NUMBER 
+    | <factor> * NUMBER 
+每行是一条规则
+
+::= 表示 变成
+
+| 表示 或者，规则的分支
+
+所有记号都是语法符号，但有些语法符号不是记号(token)
+
+BNF 总是带有递归，直接或间接指向自己
+
+Bison 的规则描述
+
+几乎就是 BNF，此外做了一点简化
+
+bison 程序 fb.y 也有类似的三部分
+
+  声明
+    复制到目标分析程序的部分
+    
+    %{
+
+    %}
+
+    token 记号声明。bison 不要求，但没有被声明为记号的语法符号，必须出现在一条规则的左边
+    token 使用大写字母
+
+    %token ADD SUB
+
+  规则
+    对 BNF 的简化 ::= 变为 :
+    ; 表示规则结束
+    规则包含匹配后动作
+    规则内语法符号都有一个语义值，左边是 $$ 右边依次为 $1 $2 记号值在 yyval 中 
+
+    calclist : 
+      | calclist exp EOL { printf("= %d\n", $2) } 两条规则
+      $2 表示 exp
+
+    规则中没有动作时，将 $1 值赋给 $$
+
+    %%
+    %%
+
+  C 代码
+
+flex bison 联合编译
+
+
+
+# Refs:
 
 -lfl 参数
   https://github.com/westes/flex/issues/155
