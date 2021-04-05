@@ -172,7 +172,64 @@ bison 程序 fb.y 也有类似的三部分
 
 flex bison 联合编译
 
+  fb1-5.l 中需要加入 #include "fb1-5.tab.h"
 
+	bison -d fb1-5.y
+	flex fb1-5.l
+	cc -o $@ fb1-5.tab.c lex.yy.c
+
+文法二义性
+
+exp: exp ADD exp
+    | exp SUB exp
+    | exp MUL exp
+    | ABS exp 
+    | NUMBER 
+    ;
+    无法区分操作优先级，有较高优先级的规则需要单独写
+
+exp: exp ADD exp 
+    | exp SUB exp
+    ;
+
+    无法分析  1 - 2 + 3 是 (1-2)+3 还是 1-(2+3)
+    二义性可能是一种错误
+
+文法有歧义时，bison 会报告冲突，并指出哪里有不同分析。bison 还是会创建语法分析器，但不保证是你希望的那种。
+
+bison 的分析算法
+  向前看一个记号来决定采用哪种规则匹配输入
+  不具有二义性也可能需要看更多记号来决定规则，但这种情况往往可以改写为只多看一个记号就足够
+
+bison 有一些特性支持自然地写出文法，只需要实现告诉 bison 优先级和分组规则
+
+另一种方法是 GLR
+
+更多规则
+
+  添加括号支持和注释
+  
+  修改语法分析器和词法分析器
+
+  "(" { return OP; }
+  ")" { return CP; }
+  "//".* /* 注释部分，忽略 */
+
+  %token OP CP 
+
+  %%
+  term: NUMBER
+      | ABS term { $$ = $2 >= 0?$2 : -$2; }
+      | OP exp CP { $$=$2; }
+      ;
+
+对比手写词法分析，语法分析器 
+
+  优点
+    对复杂语法处理更快
+    更容易调整语法规则
+
+  如果打算手写，最好先用 flex 做 prototype
 
 # Refs:
 
