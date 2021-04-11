@@ -21,6 +21,10 @@ heroku login --browser=firefox
 
 The CLI saves your email address and an API token to ~/.netrc for future use
 
+https://devcenter.heroku.com/articles/authentication#netrc-file-format
+
+cat ~/.netrc
+
 # 部署
 
 ## 部署 Django 
