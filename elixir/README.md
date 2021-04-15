@@ -1,5 +1,8 @@
 livebook
+  https://github.com/elixir-nx/livebook.git
 nx
+axon
+  https://github.com/elixir-nx/axon/
 
 bpe (Erlang)
 
