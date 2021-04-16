@@ -11,8 +11,11 @@ timex
 
 hackney
 finch
-
+  wrapper mint
+  https://blog.appsignal.com/2020/07/28/the-state-of-elixir-http-clients.html
 mint
+gun
+  https://github.com/ninenines/gun
 
 genstage
 flow
@@ -31,3 +34,6 @@ nerves
   Nerves three parts:
     Platform - a customized, minimal Buildroot-derived Linux that boots directly to the BEAM VM. (Great)
   https://hexdocs.pm/nerves/getting-started.html
+
+http://big-elephants.com/
+https://blog.appsignal.com/category/elixir.html
