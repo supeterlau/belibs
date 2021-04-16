@@ -11,6 +11,7 @@ timex
 
 hackney
 finch
+  https://github.com/keathley/finch
   wrapper mint
   https://blog.appsignal.com/2020/07/28/the-state-of-elixir-http-clients.html
 mint
@@ -35,5 +36,13 @@ nerves
     Platform - a customized, minimal Buildroot-derived Linux that boots directly to the BEAM VM. (Great)
   https://hexdocs.pm/nerves/getting-started.html
 
+dashbitco
+  https://github.com/dashbitco/nimble_pool
+
+  NimbleParsec
+    https://github.com/dashbitco/nimble_parsec
+
 http://big-elephants.com/
 https://blog.appsignal.com/category/elixir.html
+
+
