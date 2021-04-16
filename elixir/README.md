@@ -6,6 +6,9 @@ axon
 
 bpe (Erlang)
 
+timex
+  https://github.com/bitwalker/timex
+
 hackney
 finch
 
@@ -23,3 +26,8 @@ phoniex
 plug
 ecto
 absinthe
+
+nerves
+  Nerves three parts:
+    Platform - a customized, minimal Buildroot-derived Linux that boots directly to the BEAM VM. (Great)
+  https://hexdocs.pm/nerves/getting-started.html
