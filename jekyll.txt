@@ -45,6 +45,14 @@ jekyll help build
 
 jekyll build & jekyll b
 
+## 创建文章
+
+根据是否是 draft 显示标签
+
+https://arjanvandergaag.nl/blog/creating-new-jekyll-posts.html
+https://www.hongkiat.com/blog/jekyll-draft/
+https://gist.github.com/ichadhr/0b4e35174c7e90c0b31b
+
 ## Options
 
 https://jekyllrb.com/docs/configuration/
@@ -56,6 +64,9 @@ source: DIR
 destination: DIR
 
 ## 主题
+
+https://jekyllrb.com/docs/themes/
+bundle info --path minima <theme_name>
 
 ## 插件
 
