@@ -1,0 +1,233 @@
+With Liveview 
+
+flutter 
+  mlog 
+  dg
+
+phx_demo
+  liveview
+
+
+
+Elixir Phoenix Liveview Alpine.js Tailwind 
+GraphQL (Auth / CRUD)
+Gigalixir
+
+# Liveview
+
+https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html#module-use-cases Phoenix.LiveView — Phoenix LiveView v0.15.4
+  a bad fit for LiveView: Animations
+
+https://hexdocs.pm/phoenix_live_view/installation.html#content Installation — Phoenix LiveView v0.15.4
+
+创建项目
+
+  mix phx.new phx_demo --live
+
+更新 signing_salt 配置
+
+  mix phx.gen.secret 32
+
+  config/config.exs (可以跳过，自动添加有一个弱 salt)
+
+配置 controller / router / endpoint 
+
+安装 NPM 依赖
+
+  npm install --prefix assets
+
+  强制更新
+
+  npm install --force phoenix_live_view --prefix assets
+
+  在 app_web/templates/layout/root.html.leex 增加 CSRF meta tag 
+
+  <%= csrf_meta_tag() %>
+
+  顶部载入进度条
+
+  https://hexdocs.pm/phoenix_live_view/installation.html#progress-animation
+
+Start your Phoenix app with:
+
+    $ mix phx.server
+
+You can also run your app inside IEx (Interactive Elixir) as:
+
+    $ iex -S mix phx.server
+
+phx.Endpoint Config 
+
+watcher 
+  https://hexdocs.pm/phoenix/Phoenix.Endpoint.html#module-runtime-configuration
+
+项目结构:
+  root 
+    frontend
+    backend
+      asset (liveview js)
+
+## Phoenix LiveView 
+
+https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html Phoenix.LiveView
+
+### 生命周期
+
+LiveView 开始也是常规的 HTTP 请求和 HTML 响应，随后升级 upgrade 为客户端上有状态的视图 view，保证即使禁用 JavaScript 也能输出常规 HTML 页面。任何时候只要一个有状态视图 stateful view 改变或更新它的 socket assigns，视图就会自动重新渲染并将更新推送到客户端。
+
+首先根据路由正常渲染 LiveView。当 LiveView 首次渲染时，mount/3 回调被调用，参数为 当前 params，当前 session 和 LiveView socket。
+
+params 包含用户可以修改的数据，session 包含发送给应用的数据，mount/3 包含渲染视图需要的 socket assings。
+
+mounting 后，调用 render/1 发送 HTML 到客户端。
+
+渲染静态页面后，从客户端到服务器启动 LiveView 连接来推送渲染更新到客户端，并通过 phx- 绑定接收客户端事件。对于已经连接的状态，LiveView process 持续推送 render/1 结果。当 statefull view 崩溃时，客户端重连，重新调用 mount/3。
+
+例子
+
+Phoenix 约定
+
+  The PageController requires a PageView to render templates in the lib/hello_web/templates/page directory
+
+  PageController -> PageView -> 模板文件 lib/hello_web/templates/page
+
+创建 LiveView 模块，实现 mount/3 render/1 
+
+配置 router
+  
+  推荐 serve the LiveView directly from your router
+
+live "/", PageLive, :index
+
+  :index 哪里来的?
+
+live "/", PageLive, :index
+
+  使用默认 layout
+
+  lib/phx_demo_web/templates/layout/root.html.leex
+
+  配置 layout 在 live macro 中
+
+    , layout: {AppWeb.LayoutView, "app.html"}
+
+或者可以用 live_render 渲染任意模板
+
+  视图中
+
+      <%= live_render(@conn, AppWeb.ThermostatLive) %>
+
+  Controller 中
+
+    def show(conn, %{"id"=>id}) do
+      live_render(conn, AppWeb.ThermostatLive)
+    end
+
+live "/articles/:id/edit", ArticleLive.Index, :edit
+
+:edit 是 action
+
+传递额外参数
+
+  live "/thermostat", ThermostatLive, session: %{"extra_token" => "foo"}
+
+视图中
+
+  <%= live_render(@conn, MyAppWeb.ThermostatLive, session: %{"extra_token" => "foo"}) %>
+
+Twitter clone: https://www.phoenixframework.org/blog/build-a-real-time-twitter-clone-in-15-minutes-with-live-view-and-phoenix-1-5
+
+https://thepugautomatic.com/2020/05/persistent-session-data-in-phoenix-liveview/ Persistent session data in Phoenix LiveView – The Pug Automatic
+
+https://thepugautomatic.com/tag/phoenix-liveview/ Phoenix LiveView - The Pug Automatic
+
+https://medium.com/swlh/tutorial-693a566ea417 A LiveView Tutorial. Phoenix LiveView Todos | by Feather | The Startup | Medium
+
+## use snowpack 
+
+
+
+
+
+
+https://github.com/snowpackjs/snowpack snowpackjs/snowpack: WASM-powered frontend build tool. Fast, lightweight, unbundled ESM. ✌️
+Create Snowpack App (CSA)
+https://www.snowpack.dev/tutorials/react Getting Started with React
+https://www.snowpack.dev/concepts/dev-server The Dev Server
+https://www.pika.dev/blog/pika-web-a-future-without-webpack A Future Without Webpack
+https://blog.logrocket.com/snowpack-vs-webpack/ Snowpack vs. webpack - LogRocket Blog
+https://blog.logrocket.com/why-and-how-to-use-snowpack-instead-of-webpack/ Why and how to use Snowpack instead of webpack - LogRocket Blog
+https://grrr.tech/posts/relative-path/ Npx is cool... but why not use a relative $PATH? | GRRR Tech
+https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b Introducing npx: an npm package runner | by Kat Marchán | Medium
+
+https://stackoverflow.com/questions/28846814/what-does-publicpath-in-webpack-do javascript - What does "publicPath" in Webpack do? - Stack Overflow
+https://webpack.js.org/guides/public-path/ Public Path | webpack
+
+https://www.snowpack.dev/reference/configuration snowpack.config.js
+https://www.snowpack.dev/guides/optimize-and-bundle
+
+Create Snowpack App (CSA)
+https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli
+
+npx create-snowpack-app new-dir --template @snowpack/app-template-NAME [--use-yarn | --use-pnpm | --no-install]
+
+npx create-snowpack-app new-dir --template @snowpack/app-template-blank --no-install
+
+npx create-snowpack-app snow_assets --template @snowpack/app-template-blank --no-install
+
+
+## alpinejs tailwind 
+
+https://underjord.io/getting-started-with-petal.html Underjord | Getting started with PETAL
+
+安装 alpinejs 
+
+cd assets
+npm install alpinejs
+
+(after the app.scss import)
+
+安装 Tailwind CSS
+
+  https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix Adding Tailwind CSS to Phoenix 1.4 and 1.5
+
+# GraphQL
+
+absinthe 
+  https://hexdocs.pm/absinthe/overview.html
+  https://github.com/absinthe-graphql
+
+Elixir
+  Support for HTTP APIs using Plug and Phoenix via the absinthe_plug and absinthe_phoenix packages
+  Support for Ecto via the dataloader package
+JavaScript (client-side)
+  Support for Relay and Apollo Client
+  Support for Absinthe's channel-based subscriptions. See absinthe-socket.
+
+安装 absinthe 
+
+  {:absinthe, "~> 1.5"}
+
+配置 plug / phoenix 
+  https://hexdocs.pm/absinthe/plug-phoenix.html
+
+  支持 get post(application/json application/graphql)
+    application/json 只需要 post body
+    application/graphql query string 和 post body 
+
+http://blog.pthompson.org/alpine-js-and-liveview Integrating Phoenix LiveView with JavaScript and AlpineJS
+
+https://fullstackphoenix.com/tutorials/combine-phoenix-liveview-with-alpine-js Combine Phoenix LiveView with Alpine.js - Tutorials and screencasts for Elixir, Phoenix and LiveView
+
+
+https://github.com/TheAlphamerc/flutter_twitter_clone TheAlphamerc/flutter_twitter_clone: Fully functional Twitter clone built in flutter framework using Firebase realtime database and storage
+https://www.udemy.com/course/build-a-twitter-clone-with-flutter-and-firestore/ Build a Twitter clone with Flutter and Firestore | Udemy
+https://www.youtube.com/user/sonusharma045sonu thealphamerc - YouTube
+
+https://github.com/ryangjchandler/spruce ryangjchandler/spruce: A lightweight state management layer for Alpine.js. 🌲
+https://chasingcode.dev/blog/build-signup-form-with-alpinejs/ Chasing Code | Build a Dynamic Sign Up Form With Alpine.js
+http://blog.pthompson.org/liveview-tailwind-css-alpine-js-modal Creating LiveView Modals with Tailwind CSS and AlpineJS
+https://medium.com/@larapeak/tailwindcss-dropdown-with-the-use-of-alpine-js-85390ed24551 Tailwindcss dropdown with the use of Alpine.js | by Larapeak | Medium
+https://gist.github.com/ManojKiranA/8c7397721f85294a5125132e118e765e Alpine.js Todo App Demo (with Tailwind). Please feel free to fork and refactor with improvements! Motivation/details here https://www.kdobson.net/2020/alpine-js-todo-demo/)
+
+https://grox.io/ Groxio

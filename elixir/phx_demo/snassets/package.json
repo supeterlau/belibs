@@ -1,0 +1,24 @@
+{
+  "repository": {},
+  "description": " ",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "snowpack build",
+    "watch": "snowpack dev",
+    "dev": "snowpack dev"
+  },
+  "dependencies": {
+    "alpinejs": "^2.8.0",
+    "nprogress": "^0.2.0",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "tailwindcss": "^2.0.4"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-postcss": "^1.2.2",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.9",
+    "snowpack": "^3.2.2"
+  }
+}
