@@ -1,0 +1,61 @@
+https://docs.gofiber.io/
+https://github.com/gofiber/fiber
+
+# basic
+
+https://tutorialedge.net/golang/basic-rest-api-go-fiber/
+
+app := fiber.New()
+route(app)
+app.Listen(3000)
+
+func helloWorld(c *fiber.Ctx) {
+	c.Send("Hello, World!")
+}
+
+func route(app *fiber.App) {
+	app.Get("/", helloWorld)
+}
+
+添加数据库
+go get github.com/jinzhu/gorm
+go mod download github.com/mattn/go-sqlite3
+
+数据库结构标注 tags 
+  https://golang.org/ref/spec#String_literals
+  `` 表示 raw string
+
+c.JSON serialize the books array into a JSON string
+
+迁移数据库
+database.DBConn.AutoMigrate(&book.Book{})
+fmt.Println("Database Migrated")
+
+curl -X POST -H "Content-Type: application/json" --data "{\"title\": \"Angels and Demons\", \"author\": \"Dan Brown\", \"rating\": 4}" http://localhost:3000/api/v1/book
+
+curl -X POST -H "Content-Type: application/json" --data "{\"title\": \"Angels and Demons\", \"author\": \"Dan Brown\", \"rating\": 4}" http://192.168.101.9:3000/api/v1/book
+
+
+# rss
+
+https://feedafever.com/api
+
+https://github.com/gofiber/fiber
+
+C/S
+  ui(app,web) -> api -> parser rss
+
+Client
+  ui -> parser rss
+
+
+
+
+
+
+
+
+
+
+https://getqor.com/cn
+https://github.com/qor/qor go 电商系统
