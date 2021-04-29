@@ -1,0 +1,52 @@
+设置开发环境 Local Host
+
+Pipenv: the Python Virtual Environment
+  https://docs.pipenv.org/
+  https://realpython.com/pipenv-guide/
+
+  安装 pip install --user pipenv
+  常用命令
+    pipenv shell --python 3.6 如果不存在虚拟环境，就会创建一个
+    pipenv shell --python 3.8.3
+    pipenv install flask==0.12.1
+
+设置开发环境 Docker
+
+Alpine Python-latest
+  Requirements
+Database
+
+安装 fastapi
+
+pip install fastapi
+
+安装 ASGI server (推荐 uvicorn hypercorn)
+
+  什么是 ASGI
+
+pip install uvicorn
+
+运行服务器
+
+uvicorn main:app --reload
+
+查看 api 文档
+
+<root>/docs
+
+<root>/redoc
+
+https://fastapi.tiangolo.com/#recap
+
+
+
+
+
+Related Libs:
+
+# typing
+  https://docs.python.org/3/library/typing.html typing — Support for type hints — Python 3.8.6rc1 documentation
+
+# pydantic
+  Data validation and settings management using python type annotations.
+  https://pydantic-docs.helpmanual.io/ pydantic
