@@ -1,0 +1,37 @@
+https://www.gitpod.io/docs
+
+https://www.gitpod.io/docs/configuration
+
+https://www.gitpod.io/docs/config-gitpod-file
+
+.gitpod.yml
+
+# Example
+
+https://github.com/e8t-arena/gitpod
+
+gitpod.io/#https://github.com/e8t-arena/gitpod
+
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image: <your-workspace-image>
+
+# Command to start on workspace startup (optional)
+tasks:
+  - init: yarn install
+    command: yarn build
+
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8000
+    onOpen: open-preview
+
+https://www.gitpod.io/blog/docker-in-gitpod
+  可以塞进来 PG 数据库
+
+体验: 有可感知延迟
+
+Preview ENV 不错
+
+## as pptr runner
+
+## as builder
