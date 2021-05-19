@@ -1,0 +1,22 @@
+https://fastapi.tiangolo.com/deployment/docker/
+https://levelup.gitconnected.com/creating-an-api-with-fastapi-and-docker-809429d778e6
+https://towardsdatascience.com/how-to-deploy-your-fastapi-app-on-heroku-for-free-8d4271a4ab9
+
+- https://testdriven.io/courses/tdd-fastapi/docker-config/
+
+启动应用
+
+uvicorn app.main:app
+
+Config config.py
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1 不生成 pyc 文件
+ENV PYTHONUNBUFFERED 1 不缓存 stdout
+
+pipenv run pip freeze > requirements.txt
+
+pip config set global.index-url https://aws:$CODEARTIFACT_TOKEN@my_domain-111122223333.d.codeartifact.region.amazonaws.com/pypi/my_repo/simple/
+
+https://pip.pypa.io/en/stable/cli/pip_config/
+
+https://github.com/heroku/alpinehelloworld/blob/master/Dockerfile

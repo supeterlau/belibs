@@ -26,6 +26,8 @@ pip install fastapi
 
 pip install uvicorn
 
+pipenv install fastapi uvicorn
+
 运行服务器
 
 uvicorn main:app --reload
