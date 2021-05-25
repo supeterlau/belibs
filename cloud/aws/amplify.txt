@@ -1,0 +1,7 @@
+# Document
+
+https://docs.amplify.aws/cli/graphql-transformer/auth#definition
+
+# Offline
+
+https://aws.amazon.com/blogs/mobile/aws-appsync-offline-reference-architecture/
