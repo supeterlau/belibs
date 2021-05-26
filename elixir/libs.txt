@@ -1,0 +1,42 @@
+Absinthe https://hexdocs.pm/absinthe/overview.html
+Phoenix  https://hexdocs.pm/phoenix/overview.html
+Plug     https://hexdocs.pm/plug/readme.html
+Ecto     https://hexdocs.pm/ecto/Ecto.html
+Ecto SQL https://hexdocs.pm/ecto_sql/Ecto.Adapters.SQL.html
+timex https://hexdocs.pm/timex/getting-started.html
+Phoenix LiveView https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html
+Guandian
+Pow
+Phx_gen_auth
+Oban
+
+# phx_gen_auth
+
+https://github.com/aaronrenner/phx_gen_auth
+
+https://hexdocs.pm/phx_gen_auth/overview.html#content
+
+https://fullstackphoenix.com/tutorials/combining-authentication-solutions-with-guardian-and-phx-gen-auth
+
+https://experimentingwithcode.com/phoenix-authentication-with-phx-gen-auth-part-1/
+
+https://goodjam.blog/LiveView-authentication-using-phx-gen-auth-part-1
+
+https://levelup.gitconnected.com/a-deep-dive-into-authentication-in-elixir-phoenix-with-phx-gen-auth-9686afecf8bd
+
+
+# phoenix liveview
+
+https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html
+
+
+# EEx
+
+https://hexdocs.pm/eex/EEx.html
+https://hexdocs.pm/elixir/Kernel.html
+https://hexdocs.pm/ex_unit/ExUnit.html
+https://hexdocs.pm/iex/IEx.html
+https://hexdocs.pm/logger/Logger.html
+https://hexdocs.pm/mix/Mix.html
+
+# livebook
