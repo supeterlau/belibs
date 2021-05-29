@@ -1,0 +1,20 @@
+#serverless.yml
+component: django
+name: djangoDemo
+stage: dev
+
+inputs:
+  region: ap-guangzhou
+  djangoProjectName: root
+  runtime: Python3.6
+  src:
+    src: ./
+    exclude:
+      - .env
+  functionConf:
+    timeout: 10
+    memorySize: 256
+  apigatewayConf:
+    protocols:
+      - https
+    environment: release

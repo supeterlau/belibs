@@ -1,0 +1,92 @@
+
+https://docs.djangoproject.com/
+https://channels.readthedocs.io/en/stable/
+
+## basic 
+
+https://pipenv.pypa.io/en/latest/
+pip install --user pipx (??? 类似 npx in NodeJS)
+pipx install pipenv
+
+sudo apt install python3-distutils
+  https://stackoverflow.com/questions/50201005/python-error-importerror-cannot-import-name-dist
+
+
+pipenv shell --python 3.8.3
+  
+https://mirrors.aliyun.com/pypi/simple
+
+pipenv install Django
+
+>>> import django
+>>> print(django.get_version())
+
+python -m django --version
+
+创建项目
+
+  django-admin startproject some_site
+
+    create a some_site directory
+
+  django-admin startproject root
+
+  cd root && python manage.py runserver
+
+  python manage.py runserver --help
+
+  python manage.py runserver 0:8000 (0 代表 0.0.0.0 8000 为端口)
+  
+创建项目内应用 （项目内可以有多个应用）
+
+  python manage.py startapp polls
+
+  root 
+    root 
+    polls 
+
+  polls/urls.py 管理请求路径和对应视图的映射
+
+  root/urls.py 配置 polls 路由
+
+配置数据库 
+
+  root/settings.py 
+    'django.db.backends.sqlite3', 
+    'django.db.backends.postgresql', 
+    'django.db.backends.mysql',
+    'django.db.backends.oracle'
+
+pipenv install 重新初始化环境
+
+- django-rest-framework
+https://www.django-rest-framework.org/
+
+(swagger)
+
+## serverless django 
+
+https://www.zhihu.com/question/375665297 云开发与Serverless的区别是什么？ - 知乎
+
+- 腾讯 serverless 
+
+https://cloud.tencent.com/document/product/1154/41843 Serverless Framework 部署 Python Django - 框架支持 - 文档中心 - 腾讯云
+
+checkout serverless branch 
+
+runtime 支持 3.6 2.7
+
+pip install -r requirements.txt -t ./ --upgrade (替换已有的依赖)
+
+tencent serverless 自带 sqlite 版本过低，解决方案只有使用外部数据库
+
+  import sqlite3
+  
+  sqlite3.version
+
+- 阿里 serverless 
+
+- aws serverless 
+
+
+Django-3.1.5.dist-info bin django sqlparse-0.4.1.dist-info sqlparse pytz-2020.5.dist-info pytz asgiref-3.3.1.dist-info asgiref

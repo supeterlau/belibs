@@ -1,0 +1,8 @@
+vue3 
+
+https://v3.vuejs.org/
+
+yarn create vite-app <project-name>
+cd <project-name>
+yarn
+yarn dev
