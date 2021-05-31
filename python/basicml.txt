@@ -1,0 +1,44 @@
+# Ch 1
+
+!pip install mglearn (in Jupyter)
+
+1.7
+
+load_iris 返回 Bunch 对象，类似 字典
+
+target_names 预测目标种类名
+
+feature_names 预测基于的特征名
+
+data 特征数据 ( 5 项)
+
+target 标记出的种类 0 1 2 代表三个品种
+
+将带标签的数据分组 训练集 和 测试集
+
+scikit-learn train_test_split 可以拆分数据，75% 训练 25% 测试
+
+train_test_split 利用伪随机打乱数据拆分
+
+scikit-learn 数据用 X 表示 标签用 y 表示
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], random_state=0)
+
+- 观察数据
+
+是否可以不用机器学习
+
+数据是否有异常值
+  绘制散点图，多维数据使用 散点图矩阵 pair plot
+
+数据为 numpy 数组，转为 pandas DataFrame 然后用 pandas 的 scatter_matrix 绘图
+
+iris_dataframe = pd.DataFrame(X_train, columns=iris_dataset.feature_names)
+# grr = pd.pandas.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o', hist_kwds={'bins': 20}, s=60, alpha=.8, cmap=mglearn.cm3)
+grr = pd.pandas.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o', hist_kwds={'bins': 20}, s=60, alpha=.8, cmap=mglearn.cm3)
+
+
+https://stackoverflow.com/questions/36419342/how-to-wrap-code-text-in-jupyter-notebooks
+
+https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
