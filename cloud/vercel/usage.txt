@@ -1,0 +1,10 @@
+https://vercel.com/docs/build-step
+	Support
+		Next.js
+		Svelte
+		Zola
+		custom build
+
+Serverless:
+
+https://vercel.com/docs/runtimes#official-runtimes/node-js
