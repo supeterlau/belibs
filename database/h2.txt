@@ -1,0 +1,9 @@
+http://www.h2database.com/html/main.html
+
+sh ./bin/h2.sh -webAllowOthers
+
+java -cp h2-*.jar org.h2.tools.Shell
+
+http://www.h2database.com/html/tutorial.html#tutorial_starting_h2_console
+
+https://stackoverflow.com/questions/24372931/how-to-create-new-database-in-h2
