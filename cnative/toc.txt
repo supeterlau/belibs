@@ -32,3 +32,13 @@ Apache Arrow is a cross-language development platform for in-memory data
 https://github.com/apache/arrow
 
 - k8s
+
+- HashiCorp
+
+https://www.terraform.io/
+
+- drone
+
+https://www.drone.io/
+
+- DarkLang

@@ -1,0 +1,2 @@
+172.17.0.1 - - [22/Mar/2021:03:26:15 +0000] "GET / HTTP/1.1" 200 47 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0"
+172.17.0.1 - - [22/Mar/2021:03:26:15 +0000] "GET /favicon.ico HTTP/1.1" 200 47 "http://localhost:9100/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0"

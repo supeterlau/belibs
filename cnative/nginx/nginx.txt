@@ -1,0 +1,78 @@
+## NGINX
+
+https://hub.docker.com/_/nginx
+
+TAG nginx:alpine
+
+- 修改 content-type
+
+https://www.cyberciti.biz/faq/how-to-override-content-type-with-nginx-web-server/
+
+## override content-type ##
+types { } default_type "text/html; charset=utf-8";
+
+## override header (more like send custom header using nginx) #
+add_header x-robots-tag "noindex, follow";
+
+- Log 中增加响应时间
+https://onecompiler.com/questions/3src8rjkd/how-to-log-application-response-time-with-nginx
+https://www.nginx.com/blog/using-nginx-logging-for-application-performance-monitoring/
+
+- Log 中添加换行
+https://stackoverflow.com/questions/53566375/is-it-possible-to-have-a-multi-line-log-in-nginx
+https://docs.nginx.com/nginx/admin-guide/monitoring/logging/#access_log
+
+## openresty lua 
+
+https://openresty.org/en/
+https://openresty.org/en/getting-started.html
+
+
+- docker
+
+https://github.com/openresty/docker-openresty
+
+TAG: alpine-fat
+
+docker run -v /my/custom/conf.d:/etc/nginx/conf.d openresty/openresty:alpine
+
+https://blog.openresty.com/
+
+https://github.com/openresty/lua-nginx-module
+
+resty -e 'print("hello, world")'
+
+nginx -p `pwd`/ -c conf/nginx.conf
+
+https://openresty.org/en/components.html
+
+https://openresty.com.cn/cn/
+
+## kong
+
+https://konghq.com/
+
+## njs
+
+https://nginx.org/en/docs/njs/install.html
+
+查看 nginx 安装加载模块
+
+  https://www.cyberciti.biz/faq/how-to-list-installed-nginx-modules-and-compiled-flags/
+
+nginx -V
+
+nginx -V 2>&1 | tr ' ' '\n' | egrep --color -i 'ssl|brotli'
+
+
+https://nginx.org/en/linux_packages.html#dynmodules
+
+nginx-module-geoip
+nginx-module-image-filter
+nginx-module-njs
+nginx-module-perl
+nginx-module-xslt
+
+https://nginx.org/en/docs/njs/cli.html
+
+https://nginx.org/en/docs/njs/reference.html#http
