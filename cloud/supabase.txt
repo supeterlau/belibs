@@ -1,0 +1,5 @@
+https://supabase.io/
+
+Postgres Base firebase like service
+
+https://supabase.io/docs/guides/with-nextjs
