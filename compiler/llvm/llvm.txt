@@ -1,0 +1,7 @@
+
+https://llvm.org/docs/GettingStarted.html#an-example-using-the-llvm-tool-chain
+  app.c
+   clang app.c -o app
+https://llvm.org/docs/tutorial/index.html
+  Kaleidoscope: Implementing a Language with LLVM
+  Building a JIT in LLVM
