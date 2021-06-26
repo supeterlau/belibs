@@ -1,5 +1,9 @@
 https://hexdocs.pm/scenic/getting_started.html
 
+https://hexdocs.pm/scenic/overview_scene.html#components
+
+mix scenic.new.example EXAMPLE_NAME
+
 Getting Started
 
 - install
@@ -15,3 +19,8 @@ mix archive.install hex scenic_new
 mix do deps.get, scenic.run
 
 Failed to check for new Hex version network error
+
+- Configure Scenic
+
+font_metrics: https://github.com/boydm/scenic/pull/219
+
