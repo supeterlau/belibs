@@ -1,0 +1,22 @@
+bc: blockchain
+
+Bitcoin BTC 
+
+Ethereum ETH 
+
+Cardono 
+  https://cardano.org/
+
+Sia
+
+substrate
+
+algorand
+
+solana
+
+Wavelet
+
+HQ/Books/blockchain/Building Blockchain Projects.pdf
+
+https://jeiwan.net/posts/building-blockchain-in-go-part-1/

@@ -1,0 +1,211 @@
+Dapp Tutorial
+
+# make your own ecr20 token
+https://www.codementor.io/@vahiwe/building-your-own-ethereum-based-ecr20-token-in-less-than-an-hour-16f44bq67i
+https://betterprogramming.pub/create-and-deploy-your-own-erc-20-token-on-the-ethereum-network-87931fe4db20?gi=51e31e0d39bf
+https://medium.com/coinmonks/creating-my-own-erc-20-token-c8b1748d3124
+
+# Full Stack Decentralized Application
+
+https://www.dappuniversity.com/articles/the-ultimate-ethereum-dapp-tutorial
+
+传统互联网的问题
+  数据库数据会变，统计数据可能不准确
+  服务器代码会改变
+
+the blockchain is a network and a database all in one
+
+区块链相当于 network 和数据库。是节点组成的 点对点 网络。每个节点共享数据和代码。不再有中央服务器。
+
+所有交易信息每个节点都能看到，交易记录组成链形成公共账本。
+
+所有数据由密码学哈希加密，经过共识算法验证。参与节点保证各节点数据拷贝都一致。
+
+类似选举应用会考虑使用区块链开发原因在于保证数据被记录一次，保证数据不会改变。
+
+用户如何使用 Dapp。首先要有 Ether Ethereum 的货币。投票需要用 Ether 支付 gas。矿工 miner 会为交易记账，记账成功的获得收益。
+
+用户支付 gas 得到 "I in turn am confident my vote was recorded accurately forever."
+
+只有投票需要支付，看候选人则不需要。从区块链读取数据免费，写入花费 gas
+
+- 智能合约 Smart Contract
+
+Ethereum blockchain 允许在 EVM Ethereum Virtual Machine 中执行代码
+
+智能合约的函数很像互联网的微服务。能保证用户投票会被记录，并且每个用户只被记录一次
+
+dapp 架构
+
+browser -> frontend -> blockchain node
+
+开发时使用 local blockchain 
+
+
+node -v
+npm install -g truffle
+
+ganache
+ https://github.com/trufflesuite/ganache-cli
+
+Metamask
+
+- start Ganache
+
+ganache 预设 10 个 fake 账户 各 100 ether
+
+基于 TRUFFLE BOXES 开发，dapp 模板
+
+truffle unbox pet-shop (模板名)
+
+contract 的构造函数，每次将合约部署到区块链都会调用
+  与合约同名
+
+部署到区块链
+
+touch migrations/2_deploy_contracts.js
+  编号确定执行顺序
+
+注意: solc 版本是 0..5.16 意思需要按照文档
+  https://docs.soliditylang.org/en/v0.5.16/solidity-by-example.html
+
+truffle migrate
+
+open the truffle console 
+  truffle console
+
+get an instance of our deployed smart contract
+  获得合约实例
+
+  Election.deployed().then(function(instance) { app = instance })
+
+  app.candidate() => "Pony"
+
+- 列出 Candidates
+
+用 struct 表示 candidate 结构
+
+在 mapping 中存储 candidates
+
+mapping(uint => Candidate) public candidates;
+
+设为 public 会得到 getter function
+
+追踪多少 candidate
+
+uint public candidatesCount;
+
+  solidity 不支持获取 mapping 大小和遍历
+
+  lookup 不存在的 key 得到空 structure
+
+函数 添加 candidate 到 mapping
+
+truffle migrate --reset 重新部署合约
+
+https://ethereum.stackexchange.com/questions/63294/typeerror-data-location-must-be-storage-or-memory-for-parameter-in-function
+
+写测试
+
+  Ethereum 区块链上的代码都是 immutable 
+  如果合约有 bug 就必须 disable 后部署新的
+  新合约与旧合约状态不一致，地址也不同
+
+  部署合约消耗 gas 
+
+  调用合约的账户会浪费自己的钱
+
+touch test/election.js
+
+the Mocha testing framework
+the Chai assertion library
+
+用 JS 模拟客户端交互
+
+执行测试
+
+truffle test
+
+编写客户端
+
+css bootstrap
+
+server lite-server (host assets)
+
+truffle migrate --reset
+npm run dev
+
+实现投票功能
+
+- 保存已经投票的用户地址
+
+mapping 账户地址 => 是否投票
+
+- vote 函数
+
+require() 必需条件，不满足时停止执行
+
+msg.sender 获取当前发起请求用户的地址
+
+投票对象 id 合法
+
+- 测试投票功能
+
+有效投票测试
+  候选人选票增加
+  标记已投票
+
+无效投票测试
+  无效候选人 id
+  二次投票
+
+truffle test
+
+
+
+let account1 = accounts[0]
+let account2 = accounts[1]
+
+Election.deployed().then(function(instance) { app = instance })
+
+使用 async/await 
+
+app.vote(candidateId, { from: account1 })
+
+https://medium.com/blockchannel/the-use-of-revert-assert-and-require-in-solidity-and-the-new-revert-opcode-in-the-evm-1a3a7990e06e
+
+- 前端支持投票
+
+增加 form 
+
+- trigger an event whenever a vote is cast
+
+可以在投票后更新界面
+
+https://ethereum.stackexchange.com/questions/91072/setup-ganache-with-metamask-what-and-where-is-a-chain-id
+
+metamask password
+  rH5FLyfadhB94x7
+horse melody knock season chef public relief pave keen ski surge gesture
+
+- dapp
+- rust 
+- os 
+- algorithm
+  in Elixir
+- graphql elixir
+- metoomap layout
+- metoomap typeorm model
+
+- After get job
+  - DG
+  - myself contents
+  - leetcode algorithm:w
+
+
+https://www.c-sharpcorner.com/article/storage-and-memory-data-locations/
+
+
+https://www.dappuniversity.com/articles/solidity
+
+https://www.dappuniversity.com/
