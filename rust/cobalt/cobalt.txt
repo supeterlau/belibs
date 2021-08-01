@@ -1,4 +1,5 @@
-https://cobalt-org.github.io/getting-started/ Cobalt::Getting Started
+https://cobalt-org.github.io/getting-started/ 
+Cobalt::Getting Started
 
 Template:
   Gallery
@@ -15,6 +16,10 @@ Pro:
 安装
 
 curl -LSfs https://japaric.github.io/trust/install.sh | sh -s -- --git cobalt-org/cobalt.rs --crate cobalt
+
+git clone https://github.com/cobalt-org/cobalt.rs && cd cobalt.rs && cargo build && ./target/debug/cobalt --version 
+
+./target/debug/cobalt --version 
 
 新建项目
 
@@ -56,3 +61,92 @@ cobalt new --help
 配置
 
 https://cobalt-org.github.io/docs/config/
+
+## 文件结构
+
+source: "."
+
+.	站点根目录。可以在 _config.yml 中修改
+
+_cobalt.yml	Site-wide configuration file
+
+_layouts	Templates that wrap pages. The layout is chosen in the frontmatter
+_includes	Liquid snippets of content to be shared among layouts or pages.
+_data	Data files that will be loaded as part of the {{ site.data }} variable.
+_sass	Sass snippets that can be imported into your .scss files.
+_site	The output directory of cobalt. Can be modified in _cobalt.yml.
+_defaults	cobalt new initializes files from here based on the collection name.
+posts	Pages in this directory will be treated as blog posts. Can be modified in _cobalt.yml.
+_drafts	Pages in this directory will be treated as draft blog posts. Can be modified in _cobalt.yml.
+index.liquid	Any other pages found will be transformed by cobalt.
+Other files	Assets will be copied directly over from the source directory to the output directory.
+
+# theme
+
+<root>
+  _includes
+    head.liquid
+  _layout
+    home.liquid
+  _defaults
+    新建文件模板 cobalt new
+    
+
+# Improve
+
+
+https://cobalt-org.github.io/docs/layouts/
+https://cobalt-org.github.io/docs/directory/
+https://cobalt-org.github.io/docs/config/
+https://github.com/cobalt-org/cobalt.rs
+https://github.com/cobalt-org/cobalt.rs/issues/301
+
+- support theme 
+theme/
+  clean_theme
+    theme.yml
+      name: "" (unique)
+    layout
+    include
+cobalt build ignore theme
+merge layout files
+  merge("clean_theme(theme_path)/layout/index.liquid", "_layout/index.liquid")
+  tag based slot
+
+- webpage hot reload
+
+- cobalt build --watch
+
+cobalt serve 
+
+# theme 
+
+install jeklly -> build theme
+  https://jekyllrb.com/docs/installation/ubuntu/
+  sudo apt-get install ruby-full build-essential zlib1g-dev
+  gem install jekyll bundler
+
+  https://gems.ruby-china.com/
+  $ gem update --system # 这里请科学一下
+$ gem -v
+2.6.3
+  $ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+$ gem sources -l
+
+jekyll build 只需要 main.css main.css.map 就够
+
+修改静态文件引用路径
+
+https://www.rubyguides.com/2015/12/ruby-time/
+
+port jekyll theme
+
+  use site.data 代替不存在的 key 
+
+  npx stylelint **/*.css --fix
+
+sass --version
+
+https://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/
+
+rsync -avzP --delete --exclude-from 'static/theme-exclude' themes/jekyll-bootstrap-4-one-page-bio/. static/onepagebio

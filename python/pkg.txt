@@ -1,0 +1,8 @@
+fastapi
+
+asyncpg
+	https://github.com/MagicStack/asyncpg
+
+https://github.com/MagicStack
+
+https://www.edgedb.com/ BUILT ON POSTGRESOPEN SOURCENEXT-LEVEL DEVELOPER EXPERIENCE The developer database
