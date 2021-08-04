@@ -1,0 +1,152 @@
+AWS Lambda
+
+https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+
+可选其他资源服务
+  Amazon Elastic Compute Cloud (Amazon EC2)
+  AWS Elastic Beanstalk (EC2 部署)
+
+# Basic
+
+安装 AWS CLI
+
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+/usr/local/bin/aws --version
+
+验证 CLI 配置
+
+aws lambda list-functions
+
+aws lambda list-functions --profile profile_name
+
+sam 就是类似 funcraft 的工具 (serverless CLI)
+
+安装 AWS SAM CLI
+  https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html#serverless-sam-cli-install-linux-sam-cli
+
+sha256sum aws-sam-cli-linux-x86_64.zip
+
+sudo ./sam-installation/install
+
+/usr/local/bin/sam --version
+
+https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html
+
+# Create Lambda
+
+在 https://console.aws.amazon.com/lambda/home#/functions 创建函数
+
+使用 CLI:
+
+https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-awscli.html
+
+Create the execution role
+
+创建 trust-policy.json
+
+aws iam create-role --role-name lambda-ex --assume-role-policy-document file://trust-policy.json
+
+add permissions to the role
+
+增加 AWSLambdaBasicExecutionRole 权限
+
+aws iam attach-role-policy --role-name lambda-ex --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+The AWSLambdaBasicExecutionRole policy has the permissions that the function needs to write logs to CloudWatch Logs.
+
+Create the function
+
+  logs the values of environment variables and the event object
+
+create index.js
+
+Create a deployment package: zip function.zip index.js
+
+用 create-function command 创建
+
+  aws lambda create-function --function-name echo-info \
+  --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x \
+  --role arn:aws:iam::973180347456:role/lambda-ex
+
+role arn: https://console.aws.amazon.com/iam/home?region=ap-southeast-1#/roles
+
+调用函数
+
+aws lambda invoke --function-name echo-info out --log-type Tail
+
+用 base64 解码 use the base64 utility to decode the logs
+
+aws lambda invoke --function-name echo-info out --log-type Tail \
+--query 'LogResult' --output text |  base64 -d
+
+获取函数源信息和下载地址
+  aws lambda get-function --function-name my-function
+
+删除函数
+aws lambda delete-function --function-name my-function
+
+https://aws.amazon.com/serverless/getting-started/?serverless.sort-by=item.additionalFields.createdDate&serverless.sort-order=desc
+
+lambda 是组成 serverless 的一部分
+  要对外开放api，还需要 api gateway 转发网络请求事件
+
+https://www.serverless.com/framework/docs/providers/aws/guide/intro/
+
+- serverless
+https://www.serverless.com/blog/api-ruby-serverless-framework/ Building an API with Ruby and the Serverless Framework
+https://www.serverless.com/blog/serverless-express-rest-api Deploy a REST API using Serverless, Express and Node.js
+
+https://www.serverless.com/blog/announcement-cicd Announcing Serverless CI/CD
+https://www.serverless.com/blog/serverless-local-development Serverless Local Development
+https://www.serverless.com/blog/choosing-a-database-with-serverless Choosing a Database for Serverless Applications
+
+https://www.serverless.com/blog/deploy-serverless-cdn-with-serverless-components Easily Deploy A Serverless CDN With Serverless Components
+
+https://www.serverless.com/blog/official-guide-aws-http-apis The Official Guide to AWS HTTP APIs
+
+https://www.serverless.com/blog/serverless-auth-with-aws-http-apis Serverless Auth with AWS HTTP APIs
+
+serverless custom runtime 依赖于 aws lambda layer
+  https://www.serverless.com/blog/aws-lambda-supported-languages-and-runtimes
+  https://akrabat.com/serverless-php-on-aws-lamda/
+
+- Runtime
+
+https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html#runtimes-custom-build
+
+打包为 zip 
+docker container
+
+Bash:
+  https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html
+  
+a runtime bootstrap file, and a function handler.
+
+
+Elixir
+
+- DB 
+
+
+# Custom Runtime
+
+aws iam list-roles --profile PROFILE
+
+
+
+
+
+
+https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html   cloud infrastructure as code
+
+https://github.com/MikletNg/aws-serverless-wordpress
+
+https://console.aws.amazon.com/lambda/home?region=us-east-1#/stepfunctions
+
+AWS Step Functions is an orchestration service that lets you connect your Lambda functions into serverless workflows, called state machines.
+
