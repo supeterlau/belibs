@@ -1,0 +1,17 @@
+https://github.com/zserge/lorca/blob/master/ui.go
+
+UI:
+  HTML / Svelte / React
+    Snowpack
+      TypeScript Tailwind emotion
+
+    https://www.npmjs.com/package/snowpack-react-typescript-tailwind snowpack-react-typescript-tailwind - npm
+
+Svelte:
+  https://github.com/ben-rogerson/twin.macro ben-rogerson/twin.macro: 🦹‍♂️ Twin blends the magic of Tailwind with the flexibility of css-in-js (emotion, styled-components and goober) at build time.
+  https://codechips.me/snowpack-svelte-typescript-tailwindcss/ Snowpack with Svelte, Typescript and Tailwind CSS is a very pleasant surprise
+
+  start_snow_svelte () {
+    npx create-snowpack-app $1 --template @snowpack/app-template-svelte
+    cd $1 && npm start
+  }
