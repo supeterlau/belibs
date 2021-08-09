@@ -5,3 +5,7 @@ https://docs.amplify.aws/cli/graphql-transformer/auth#definition
 # Offline
 
 https://aws.amazon.com/blogs/mobile/aws-appsync-offline-reference-architecture/
+
+# Auth
+
+https://medium.com/@jan.hesters/email-only-sign-up-with-aws-amplify-81a3d718a7f9
