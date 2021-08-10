@@ -1,0 +1,51 @@
+
+https://aws.amazon.com/cn/ecs
+  Amazon Elastic Container Service (Amazon ECS) 是一种完全托管的容器编排服务
+  Amazon’s “Docker” as a service
+
+https://aws.amazon.com/cn/eks
+  Amazon Elastic Kubernetes Service (Amazon EKS) 为您提供在 AWS 云和本地启动、运行和扩展 Kubernetes 应用程序所需的灵活性
+
+https://aws.amazon.com/cn/fargate
+  AWS Fargate 是一种适用于容器的无服务器计算引擎，可与 Amazon Elastic Container Service (ECS) 和 Amazon Elastic Kubernetes Service (EKS) 一起使用
+
+  https://aws.amazon.com/cn/blogs/containers/the-role-of-aws-fargate-in-the-container-world/ The role of AWS Fargate in the container world | Containers
+
+  https://aws.amazon.com/cn/blogs/containers/building-http-api-based-services-using-aws-fargate/ Building HTTP API-based services using Amazon API Gateway, AWS PrivateLink and AWS Fargate | Containers
+
+https://blog.iron.io/aws-fargate-vs-eks/ AWS Fargate vs. EKS: What You Need to Know | The Iron.io Blog
+
+https://www.logicata.com/blog/aws-ecs-vs-eks/ ECS vs EKS: Which AWS Service is Right for You? | Logicata
+
+https://logz.io/blog/aws-eks-vs-ecs-vs-fargate-understand-differences/ EKS vs. ECS vs. Fargate: Understanding the Differences | Logz.io
+
+
+saasrun:
+  保留一个月的实例
+  phoenix liveview 
+  ex-aws
+    https://github.com/ex-aws/ex_aws ex-aws/ex_aws: A flexible, easy to use set of clients AWS APIs for Elixir
+    AWS Fargate
+  
+  平台是否提供容器服务
+    提供
+      容器服务
+        heroku 
+          https://devcenter.heroku.com/articles/container-registry-and-runtime Container Registry & Runtime (Docker Deploys) | Heroku Dev Center
+        aws 
+          Fargate
+    不提供
+      自行初始化容器
+
+
+s3 
+
+ec2 
+
+amplify
+
+- no need phone_number
+
+https://stackoverflow.com/questions/59579457/aws-cognito-how-to-prevent-collection-of-phone-number reactjs - AWS Cognito: How to prevent collection of phone number? - Stack Overflow
+
+https://gist.github.com/singledigit/2c4d7232fa96d9e98a3de89cf6ebe7a5 Create a Cognito Authentication Backend via CloudFormation
