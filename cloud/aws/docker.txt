@@ -1,0 +1,19 @@
+AWS Copilot 
+AWS ECS
+AWS ECR
+
+
+https://www.bmc.com/blogs/aws-ecs-vs-aws-lambda/
+
+https://www.serverless.com/blog/why-we-switched-from-docker-to-serverless
+
+https://dev.to/raphaelmansuy/10-minutes-to-deploy-a-docker-compose-stack-on-aws-illustrated-with-hasura-and-postgres-3f6e
+
+https://www.docker.com/blog/docker-compose-from-local-to-amazon-ecs/
+
+https://aws.amazon.com/blogs/containers/introducing-aws-copilot/
+
+https://dashbird.io/blog/deploying-aws-lambda-with-docker/
+
+
+https://dashbird.io/ Monitor serverless applications at any scale
