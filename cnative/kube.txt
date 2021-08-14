@@ -56,3 +56,44 @@ pulumi
 https://www.servicemesher.com/istio-handbook/ Istio Handbook
 
 https://www.cncf.io/certification/cka/ Certified Kubernetes Administrator (CKA)
+
+# Course 00
+
+https://www.katacoda.com/courses/kubernetes/launch-single-node-cluster
+
+minikube version
+
+启动 minikube 
+minikube start --wait=false
+  --wait=true Block until the apiserver is servicing API requests
+
+detail 和 health status
+
+kubectl cluster-info
+
+查看 nodes
+
+kubectl get nodes
+
+NotReady still starting the components
+
+部署容器
+
+kubectl create deployment first-deployment --image=katacoda/docker-http-server (创建 pods
+
+kubectl get pods
+
+kubectl expose deployment first-deployment --port=80 --type=NodePort
+
+export PORT=$(kubectl get svc first-deployment -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
+curl host01:$PORT
+
+Enable the dashboard
+
+minikube addons enable dashboard
+
+kubectl apply -f /opt/kubernetes-dashboard.yaml
+
+see the progress of the Dashboard starting
+
+kubectl get pods -n kubernets-dashboard -w
