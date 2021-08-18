@@ -1,0 +1,64 @@
+
+
+Deploy Static 
+
+
+Cobalt 
+
+Creating a new bucket 创建存储桶
+
+  https://s3.console.aws.amazon.com/s3/home
+
+  存储桶名字必须 globally 唯一
+
+  batman-static-host
+
+上传网站
+
+  页面 upload 
+
+  s3 cli 
+
+    aws s3 ls
+
+    aws s3 cp <source> <target> [--options]
+
+    aws s3 cp filename.txt s3://bucket-name
+
+设置 bucket 为网站
+
+  编辑静态网站托管
+设置桶的隐私权限 bucket policy and permissions
+  unblock all public access
+  add a Bucket Policy
+
+  Permission Tab: 
+
+  Bucket policy button: 存储桶策略
+
+Preview:
+  http://[your-bucket-name].s3-website-[region-id].amazonaws.com
+
+  http://batman-static-host.s3-website-ap-southeast-1.amazonaws.com
+
+Eleventy
+
+refs:
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3.html Using Amazon S3 with the AWS CLI - AWS Command Line Interface
+
+- s3 cli cp 
+
+https://adamtheautomator.com/upload-local-files-aws-s3-aws-cli/#Uploading_Individual_Files_to_S3 How To Upload Local Files to AWS S3 with the AWS CLI
+
+aws s3 cp c:\sync s3://atasync1/sync --recursive
+
+aws s3 cp ./_site/  s3://batman-static-host/cobalt_site --recursive
+
+- host static 
+
+https://www.freecodecamp.org/news/how-to-host-and-deploy-a-static-website-or-jamstack-app-to-s3-and-cloudfront/#storing-your-website-on-s3 How to host and deploy a static website or JAMstack app to AWS S3 and CloudFront
+
+https://www.sqlshack.com/launch-a-static-website-using-aws-s3-buckets/ Launch a static website using AWS S3 buckets
+
+https://medium.com/@kyle.galbraith/how-to-host-a-website-on-s3-without-getting-lost-in-the-sea-e2b82aa6cd38 How to Host a Website on S3 Without Getting Lost in the Sea | by Kyle Galbraith | Medium
