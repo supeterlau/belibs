@@ -1,3 +1,5 @@
+https://earthly.dev/ Makefile + Dockerfile = Earthfile (Understandable and Repeatable Build Scripts with Earthly)
+
 https://www.cncf.io/projects/
 
 - buildpacks
