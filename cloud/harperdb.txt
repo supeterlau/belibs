@@ -1,0 +1,8 @@
+HarperDB
+
+Database as a service
+
+https://studio.harperdb.io/
+
+https://devsday.ru/blog/details/31108
+	https://levelup.gitconnected.com/build-a-rest-api-with-node-js-and-harperdb-5d5b4cf06c91
