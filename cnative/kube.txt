@@ -54,3 +54,5 @@ pulumi
 
 
 https://www.servicemesher.com/istio-handbook/ Istio Handbook
+
+https://www.cncf.io/certification/cka/ Certified Kubernetes Administrator (CKA)
