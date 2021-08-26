@@ -1,0 +1,140 @@
+Elixir's Platform-as-a-Service
+
+https://gigalixir.com/
+
+https://blog.gigalixir.com/
+
+新建项目
+
+# 部署已有项目
+  https://gigalixir.readthedocs.io/en/latest/modify-app/index.html
+
+选择打包工具
+Mix	
+Elixir Releases	
+Distillery
+
+- Distillery
+https://gigalixir.readthedocs.io/en/latest/modify-app/distillery.html
+
+{:distillery, "~> 2.1"}
+mix deps.get
+mix distillery.init
+
+git add mix.exs mix.lock rel/
+git commit -m 'install distillery'
+
+endpoint module name
+
+grep -R "defmodule.*Endpoint" lib/
+
+Verify:
+
+building static assets
+
+  mix deps.get
+  cd assets \
+  && npm install \
+  && npm run deploy
+  cd ..
+  mix phx.digest
+
+building a Distillery release locally
+
+  "postgresql://user:pass@localhost:5432/foo"
+
+  "postgresql://dev:xubuntudb@localhost:5432/live_app_dev"
+
+  SECRET_KEY_BASE="$(mix phx.gen.secret)" MIX_ENV=prod DATABASE_URL="postgresql://dev:xubuntudb@localhost:5432/live_app_dev" mix distillery.release --env=prod
+
+running it locally
+
+  MIX_ENV=prod APP_NAME=live_app SECRET_KEY_BASE="$(mix phx.gen.secret)" DATABASE_URL="postgresql://dev:xubuntudb@localhost:5432/live_app_dev" MY_HOSTNAME=example.com MY_COOKIE=secret REPLACE_OS_VARS=true MY_NODE_NAME=foo@127.0.0.1 PORT=4000 _build/prod/rel/live_app/bin/live_app foreground
+
+export SECRET_KEY_BASE="$(mix phx.gen.secret)"
+export DATABASE_URL="postgresql://dev:xubuntudb@localhost:5432/live_app_dev" 
+
+MIX_ENV=prod mix distillery.release --env=prod
+
+export APP_NAME=live_app
+
+MY_HOSTNAME=example.com MY_COOKIE=secret REPLACE_OS_VARS=true MY_NODE_NAME=foo@127.0.0.1 PORT=4000 _build/prod/rel/$APP_NAME/bin/$APP_NAME foreground
+
+curl localhost:4000
+
+拒绝访问: 未加载配置
+  https://github.com/bitwalker/distillery/issues/37
+
+_build/prod/rel/$APP_NAME/bin/$APP_NAME console 可以进入交互界面
+
+PG_SSL=false MIX_ENV=prod mix distillery.release --env=prod
+
+MIX_ENV=prod mix distillery.release --env=prod
+
+- Set Up App for Deploys
+
+gigalixir create -n $APP_NAME --cloud=aws --region=us-west-2
+
+验证
+
+  gigalixir apps
+
+  git remote -v
+
+Specify Versions
+
+  Elixir
+  export ELIXIR_VERSION=1.12
+  export ERLANG_VERSION=24.0
+  echo "elixir_version=${ELIXIR_VERSION}" > elixir_buildpack.config
+  echo "erlang_version=${ERLANG_VERSION}" >> elixir_buildpack.config
+
+  NodeJS
+  echo "node_version=14.17.0" > phoenix_static_buildpack.config
+
+https://gist.github.com/eiri/193172728318fd5b41384e8ee2390fb1
+  erlang-version-check.md
+
+Provision a Database
+  gigalixir pg:create --free
+
+  gigalixir pg 查看
+
+  gigalixir config 确认包含 DATABASE_URL
+
+部署
+  git push gigalixir 或
+
+  git push --set-upstream gigalixir CURRENT_BRANCH
+
+查看部署状态
+  gigalixir ps
+
+访问应用
+  curl https://$APP_NAME.gigalixirapp.com/
+
+数据库迁移
+
+  不使用 release 运行
+
+    gigalixir run mix ecto.migrate
+    # this is run asynchronously as a job, so to see the progress, you need to run
+    gigalixir logs
+
+  using distillery or Elixir releases,
+    # pg:migrate runs migrations from your app node so we need to add ssh keys first
+
+    generate key pair: 
+      ssh-keygen -t ed25519 -C ""
+
+    gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"
+    gigalixir ps:migrate
+
+连接 container
+gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"
+
+gigalixir account:ssh_keys 检查已添加 key
+
+gigalixir ps:migrate
+
+The push must include a change to the master branch or main branch to be deployed
