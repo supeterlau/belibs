@@ -1,0 +1,130 @@
+# GitHub Actions ( CI/CD )
+
+https://docs.github.com/en/actions/quickstart
+
+https://docs.github.com/en/actions/learn-github-actions
+
+## quickstart
+
+https://docs.github.com/en/actions/quickstart
+
+Deploy to gigalixir
+
+## Hello GitHub Action
+
+https://lab.github.com/githubtraining/github-actions:-hello-world
+
+1. Add a Dockerfile
+Start your action by creating a Dockerfile
+
+GitHub Actions 两个组件
+  action
+  workflow (使用 action)
+
+action 类型
+  container actions
+    只能在 GitHub-hosted Linux 环境使用
+  JavaScript actions
+    执行更快，需要管理依赖
+
+创建新分支
+  git co -b first-action
+创建 action-a/Dockerfile
+  mkdir action-a
+
+FROM debian:9.5-slim
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+2. Add an entrypoint script
+Script out how your action will run with an entrypoint script
+
+touch entrypoint.sh
+
+#!/bin/sh -l
+
+sh -c "echo Hello world my name is $INPUT_MY_NAME"
+
+3. Add an action.yml file
+Create the necessary metadata for the action
+
+定义 action.yml 设置 metadata 
+
+action-a/action.yml
+
+name: "GitHub Actions"
+description: "Works"
+author: "octocat@github.com"
+
+inputs:
+  USER_NAME:
+    description: "Who to greet"
+    required: true
+    default: "coder"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "mic"
+  color: "purple"
+
+
+4. Start your workflow file
+Get your workflow kicked off with the workflow file
+
+workflow 文件 .github/workflows/main.yml 
+
+workflow 可以基于指定 event 执行，本次使用 push
+
+name: A workflow for simple action
+on: push
+  workflow 每次在 push event 时触发
+
+5. Run an action from your workflow file
+Specify a job and call actions within your workflow file
+
+Workflows 由 jobs 组成
+
+jobs 由 steps 组成
+  action 可以是同一 repo， 其他 repo 或发布的 Docker container
+
+jobs:
+  build:
+    name: simple action (displayed on GitHub when the workflow is running)
+    runs-on: ubuntu-latest (defines the type of machine to run the job on)
+    steps:
+      - uses: actions/checkout@v1 (uses a community action called checkout to allow the workflow to access the contents of the repository) 使用其他 repo 的 action
+      - uses: ./action-a
+        with:
+          USER_NAME: "monaco"
+
+repo/actions 中查看
+
+6. Trigger the workflow
+See your push trigger the workflow you've created and run your action
+
+push 触发
+
+7. Incorporate the workflow
+Merge your branch for the workflow to become incorporated
+
+# How to
+
+- create file / issue
+
+- run cron job
+
+# Application
+
+- Cron Job
+  微博热搜备份
+
+- CI/CD
+
+- Responding to workflow triggers
+
+- 
