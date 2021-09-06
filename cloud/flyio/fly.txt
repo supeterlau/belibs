@@ -1,0 +1,19 @@
+https://fly.io/docs/app-guides/openresty-nginx-plus-lua/
+
+  https://fly.io/docs/getting-started/node/
+
+  https://fly.io/docs/reference/postgres/
+
+  https://fly.io/docs/about/pricing/
+
+  https://fly.io/blog/
+
+  https://fly.io/blog/we-are-hiring-elixir-developer-advocates/
+
+  https://nginx.org/en/docs/njs/install.html
+
+flyctl --help
+
+flycli auth login
+
+flyctl version update
