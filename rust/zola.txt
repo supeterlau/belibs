@@ -1,0 +1,53 @@
+getzola
+  build from source:
+    https://www.getzola.org/documentation/getting-started/installation/ Installation | Zola
+    cargo build --release
+
+https://www.staticgen.com/ StaticGen | Top Open Source Static Site Generators
+
+https://github.com/harttle/liquidjs harttle/liquidjs: A simple, expressive, safe and Shopify compatible template engine in pure JavaScript.
+
+https://hexdocs.pm/eex/EEx.html EEx — EEx v1.10.4
+
+TODO:
+  go through source code 
+  auto reload server
+  support read from API
+  support import from other CMS/Site
+  theme converter
+    https://github.com/getzola/hyde getzola/hyde: Port of https://github.com/poole/hyde to Zola
+    https://www.getzola.org/themes/zulma/
+      https://www.getzola.org/themes/zulma/
+    https://tera.netlify.app/ Tera
+    https://github.com/Keats/tera Keats/tera: A template engine for Rust based on Jinja2/Django
+
+    Theme Number:
+      https://jamstackthemes.dev/ New (commit last 12 months)
+      https://jamstackthemes.dev/themes/ All
+      jekyll 402
+        Liquid
+      hexo 22
+      hugo 263
+      zola
+      11ty
+
+- start 
+
+zola init
+
+90M target/release/zola
+
+74M /usr/local/Cellar/hugo/0.71.1/bin/hugo
+
+~/DevStore/zola/target/release/zola help
+
+theme = "hyde"
+[extra] 要在 extra 之前
+
+https://www.getzola.org/documentation/getting-started/configuration/ Configuration | Zola
+
+- Theme 
+  https://github.com/getzola/hyde getzola/hyde: Port of https://github.com/poole/hyde to Zola
+
+https://www.getzola.org/documentation/themes/creating-a-theme/ Creating a theme | Zola
+https://tera.netlify.app/docs#inheritance Tera
