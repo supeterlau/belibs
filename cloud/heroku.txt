@@ -29,6 +29,9 @@ cat ~/.netrc
 
 ## 部署 Django 
 
+# Docker support
+
+/home/quantum/Downloads/taste/heroku/phxdev
 
 
 heroku run bash --app myaplication

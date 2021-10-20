@@ -1,0 +1,41 @@
+https://github.com/livebook-dev/livebook
+https://github.com/livebook-dev/nerves_livebook
+
+数据分析
+协作编辑
+CMS (airtable)
+
+# 问题
+中文字体
+数据源
+
+# 运行
+
+
+escript
+	mix escript.install hex livebook
+	# Start the Livebook server
+	livebook server
+	# See all the configuration options
+	livebook server --help
+
+docker
+docker run -p 8080:8080 --pull always livebook/livebook
+docker run -p 8080:8080 --pull always -u $(id -u):$(id -g) -v $(pwd):/data livebook/livebook
+docker run -p 8080:8080 --pull always -e LIVEBOOK_PASSWORD="securesecret" livebook/livebook
+
+mix
+git clone https://github.com/livebook-dev/livebook.git
+mix deps.get --only prod
+# Run the Livebook server
+MIX_ENV=prod mix phx.server
+
+
+mix
+
+
+
+
+
+
+
