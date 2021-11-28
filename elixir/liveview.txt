@@ -1,0 +1,10 @@
+Elixir:
+	phonenix-liveview
+
+PHP:
+	livewire
+
+Ruby:
+
+Haskell:
+	https://docs.servant.dev/en/stable/
