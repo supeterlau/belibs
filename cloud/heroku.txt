@@ -25,14 +25,19 @@ https://devcenter.heroku.com/articles/authentication#netrc-file-format
 
 cat ~/.netrc
 
+# CLI 
+
+heroku apps -h 
+  apps:desctroy APPNAME
+  apps:desctroy --confirm APPNAME
+
 # 部署
 
 ## 部署 Django 
 
 # Docker support
 
-/home/quantum/Downloads/taste/heroku/phxdev
-
+taste/heroku/phxdev
 
 heroku run bash --app myaplication
 https://stackoverflow.com/questions/35857787/running-bash-on-heroku-wont-work
@@ -44,10 +49,16 @@ https://medium.com/tarkalabs/docker-deployments-to-heroku-5802b14df4fa
 
 https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa
 
-Host static on Heroku
+# Host static on Heroku
 
 https://www.huxiu.com/article/135085.html
 https://www.huxiu.com/article/319114.html
+
+heroku create staticdock
+
+heroku create
+
+git push heroku main (main 到 heroku 才触发 build)
 
 heroku stack:set heroku-18 (正常用 heroku create)
 切换 docker 到普通
