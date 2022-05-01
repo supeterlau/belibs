@@ -14,6 +14,46 @@ CLI login
   
   deta login
 
-  deta new --node node-app
+  deta new --node nodeapp
 
   yarn add deta express
+
+
+# Python
+
+https://fastapi.tiangolo.com/advanced/custom-response/?h=streamingresponse#fileresponse
+
+https://docs.deta.sh/docs/home/
+https://docs.deta.sh/docs/micros/getting_started (Server)
+https://docs.deta.sh/docs/drive/about (Storage)
+https://docs.deta.sh/docs/base/about (NoSQL)
+
+deta new --python pyapp
+deta deploy
+deta auth disable
+
+# Front
+
+glich (react next.js nodejs)
+deno.deploy + deta.sh
+  NodeJS/Python + mongodb/websocket
+
+mq
+notification
+cron/trigger
+as a service
+
+cron trigger -> crawler weibo hot -> save to mongo cloud
+
+Hackernew clone:
+https://www.sitepoint.com/react-harperdb-build-hacker-news-clone/
+https://fullstack-nextjs-in-action.taonan.lu/docs/login-system/
+https://developer.redis.com/howtos/hackernews/
+https://www.crowdbotics.com/blog/how-to-build-a-hacker-news-clone-with-react-and-next-js
+https://www.freecodecamp.org/news/how-to-build-a-hacker-news-clone-using-react/
+https://blog.logrocket.com/hacker-news-client-chakra-ui-next-js/
+https://gitconnected.com/courses/learn-react-redux-tutorial-build-a-hacker-news-clone
+
+https://news.ycombinator.com/item?id=7958020 Minecraft clone in Python with Pyglet
+
+https://breakingcode.wordpress.com/
