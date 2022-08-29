@@ -1,0 +1,39 @@
+https://rust-lang.github.io/mdBook/
+
+- Pre-compiled binaries
+
+https://github.com/rust-lang/mdBook/releases
+
+tar -xvf mdbook.tar.gz
+
+- build and install mdBook
+
+cargo install mdbook
+
+- latest master version
+
+cargo install --git https://github.com/rust-lang/mdBook.git mdbook
+
+- Create Book
+
+mdbook init my-first-book
+cd my-first-book
+mdbook serve --open
+
+- Configuration
+
+https://rust-lang.github.io/mdBook/format/configuration/renderers.html#outputhtmlfold
+
+[output.html.fold]
+enable = false    # whether or not to enable section folding
+level = 0         # the depth to start folding
+
+- more 
+
+https://rust-lang.github.io/mdBook/format/summary.html
+
+https://rust-lang.github.io/mdBook/format/theme/index.html
+
+https://rust-lang.github.io/mdBook/format/markdown.html#extensions
+
+https://rust-lang.github.io/mdBook/for_developers/backends.html
